@@ -1,0 +1,97 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{# firstrun for nightlies #}
+
+{% extends "/firefox/base-resp.html" %}
+
+{# "noindex" pages should not have the canonical or hreflang tags: bug 1442331 #}
+{% block canonical_urls %}<meta name="robots" content="noindex,follow">{% endblock %}
+
+{% block page_css %}
+  {{ css_bundle('nightly_firstrun') }}
+{% endblock %}
+
+{% add_lang_files "firstrun" "mobile" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_favicon %}{{ static('img/firefox/nightly/favicon.png') }}{% endblock %}
+{% block page_favicon_large %}{{ static('img/firefox/nightly/favicon-192.png') }}{% endblock %}
+{% block page_image %}{{ static('img/firefox/nightly/page-image.png') }}{% endblock %}
+{% block page_title %}{{ _('Firefox Nightly First Run Page') }}{% endblock %}
+{% block page_title_suffix %}{% endblock %}
+{% block page_og_url %}{{ url('firefox.all', channel='nightly') }}{% endblock %}
+
+{% block body_id %}firefox-firstrun{% endblock %}
+
+{% block site_header_nav %}{% endblock %}
+{% block site_header_logo %}{% endblock %}
+
+{% block content %}
+
+<main role="main">
+  <header id="firstrun-header">
+    <h1>{{ _('Thank you for using Firefox Nightly') }}</h1>
+    <h2>{{ _('Choose an area to get involved below and help make Firefox better for users everywhere') }}</h2>
+  </header>
+  <div id="nightly-box">
+    <section class="blue-box test">
+      <header class="title">
+        <h4>{{ _('Test') }}</h4>
+      </header>
+      <div class="content">
+        <p class="description">
+          {{ _('Find and file bugs and generally make sure things work as they should.') }}
+        </p>
+        <a rel="external" data-element-type="button" href="{{ _('https://quality.mozilla.org/get-involved/') }}" class="button">{{ _('Start testing') }}</a>
+      </div>
+    </section>
+    <section class="blue-box code">
+      <header class="title">
+        <h4>{{ _('Code') }}</h4>
+      </header>
+      <div class="content">
+        <p class="description">
+          {{ _('File bugs and work on the building blocks of the Firefox browser.') }}
+        </p>
+        <a rel="external" data-element-type="button" href="{{ _('https://developer.mozilla.org/docs/Introduction') }}" class="button">{{ _('Start coding') }}</a>
+      </div>
+    </section>
+    <section class="blue-box localize">
+      <header class="title">
+        <h4>{{ _('Localize') }}</h4>
+      </header>
+      <div class="content">
+        <p class="description">
+          {{ _('Make Firefox available (and better) in more languages around the world.') }}
+        </p>
+        <a rel="external" data-element-type="button" href="{{ _('https://wiki.mozilla.org/L10n:Contribute') }}" class="button">{{ _('Start localizing') }}</a>
+      </div>
+    </section>
+  </div>
+
+  {% if not request.locale.startswith('en') %}
+    {% if l10n_has_tag('promo_locale') %}
+    {# The following block is entirely defined by locales, and the placeholder in en-US here will never be exposed to production #}
+      <div class="blue-box l10n">
+        {% l10n promo_locale 20150101 %}
+          <h3>Learn more about your local Mozilla community</h3>
+          <ul class="unstyled">
+            <li><a href="http://www.example.com">Meet our community</a></li>
+          </ul>
+        {% endl10n %}
+      </div>
+    {% endif %}
+  {% endif %}
+</main>
+
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+
+{% block js %}{% endblock %}
+
+{# Bug 1381776 #}
+{% block update_notification %}{% endblock %}

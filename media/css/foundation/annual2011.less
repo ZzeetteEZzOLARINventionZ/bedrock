@@ -4,6 +4,10 @@
 
 @import "../sandstone/lib.less";
 
+#tabzilla:before {
+  background-color: @textColorSecondary;
+}
+
 @mozred:    #ba2725;
 @blue:      #2293d1;
 @orange:    #e56125;
@@ -27,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 #sustainability h2, #sustainability h3 { color: @red; }
 
 .section-title {
-  font-size: 38px;
+  .font-size(38px);
   margin: 0 -20px .35em;
   padding: .5em 20px 0;
   border-top: 2px solid;
@@ -59,18 +63,16 @@ a.vid-youtube:focus {
 
 #masthead {
   width: auto;
-  padding: 45px 20px 20px;
+  padding: 0 20px 20px;
   position: relative;
+  margin-top: -10px;
+
   h1 {
     font-style: normal;
-    font-size: 72px;
+    .font-size(72px);
     letter-spacing: -2px;
     margin: (@baseLine / 2) 0;
-  }
-  #tabzilla {
-    position: absolute;
-    right: 0;
-    top: 0;
+    padding-top: 45px;
   }
 }
 
@@ -120,19 +122,34 @@ a.vid-youtube:focus {
 }
 
 #page-nav, #page-nav.faq, #page-nav a { background: @mozred;  }
-#nav-welcome.current a, #nav-faq.current a { background: #fff; color: @mozred; }
+#nav-welcome.current a, #nav-faq.current a {
+  background: #fff;
+  color: @mozred;
+}
 
 #page-nav.mobilized, #page-nav.mobilized a { background: @blue; }
-#nav-mobilized.current a { background: #fff; color: @blue; }
+#nav-mobilized.current a {
+  background: #fff;
+  color: @blue;
+}
 
 #page-nav.action, #page-nav.action a { background: #000; }
-#nav-action.current a { background: #fff; color: #000; }
+#nav-action.current a {
+  background: #fff;
+  color: #000;
+}
 
 #page-nav.community, #page-nav.community a { background: @orange; }
-#nav-community.current a { background: #fff; color: @orange; }
+#nav-community.current a {
+  background: #fff;
+  color: @orange;
+}
 
 #page-nav.sustainability, #page-nav.sustainability a { background: @red; }
-#nav-sustainability.current a { background: #fff; color: @red; }
+#nav-sustainability.current a {
+  background: #fff;
+  color: @red;
+}
 
 /* Full-window overlays *********/
 body.noscroll {
@@ -140,8 +157,8 @@ body.noscroll {
 }
 
 #fill {
-  background: #444 url(/media/img/foundation/annualreport/2011/grain.png);
-  background: rgba(0,0,0,.9) url(/media/img/foundation/annualreport/2011/grain.png);
+  background: #444 url('/media/img/foundation/annualreport/2011/grain.png');
+  background: rgba(0,0,0,.9) url('/media/img/foundation/annualreport/2011/grain.png');
   width: 100%;
   height: 100%;
   position: fixed;
@@ -187,7 +204,7 @@ body.noscroll {
   border: 1px solid #ccc;
   color: #ccc;
   .open-sans;
-  font-size: 1em;
+  .font-size(1em);
   text-transform: uppercase;
   padding: .2em 10px;
   cursor: pointer;
@@ -270,7 +287,7 @@ body.noscroll {
   border: 0;
   padding: .2em 20px;
   .open-sans;
-  font-size: 1em;
+  .font-size(1em);
   text-transform: uppercase;
   background: #ccc;
   background: rgba(255,255,255,.65);
@@ -280,7 +297,7 @@ body.noscroll {
 }
 .read:after {
   content: " »";
-  font-size: 1.2em;
+  .font-size(1.2em);
   line-height: 1;
 }
 
@@ -297,7 +314,7 @@ body.noscroll {
   .open-sans-light;
   background: #000;
   color: #fff;
-  font-size: 24px;
+  .font-size(24px);
   padding: 40px 20px;
   margin: 0;
   text-align: center;
@@ -339,10 +356,10 @@ body.noscroll {
 .mob-firefoxos {
   .pull {
     .open-sans-light;
-    background: #004980 url(/media/img/foundation/annualreport/2011/mob-firefoxos.jpg) center top no-repeat;
+    background: #004980 url('/media/img/foundation/annualreport/2011/mob-firefoxos.jpg') center top no-repeat;
     background-size: cover;
     padding: 100px 90px;
-    font-size: 38px;
+    .font-size(38px);
     font-style: italic;
     text-align: center;
     color: #f7f4ec;
@@ -363,11 +380,11 @@ body.noscroll {
   h4 {
     padding: 85px 20px 0 215px;
     min-height: 235px;
-    font-size: 42px;
+    .font-size(42px);
     font-style: normal;
     color: #f7f4ec;
     text-shadow: none;
-    background: #85c0da url(/media/img/foundation/annualreport/2011/mob-fxandroid.jpg) no-repeat;
+    background: #85c0da url('/media/img/foundation/annualreport/2011/mob-fxandroid.jpg') no-repeat;
   }
   .overlay {
     width: 780px;
@@ -387,12 +404,12 @@ body.noscroll {
 
 /* Firefox Desktop ***/
 .mob-fxdesktop .pull {
-  background: #424d52 url(/media/img/foundation/annualreport/2011/mob-fxdesktop.jpg) center top no-repeat;
+  background: #424d52 url('/media/img/foundation/annualreport/2011/mob-fxdesktop.jpg') center top no-repeat;
   min-height: 300px;
   padding: 120px 100px 0;
   text-align: center;
   .open-sans-light;
-  font-size: 42px;
+  .font-size(42px);
   font-style: italic;
   color: #f7f4ec;
   text-shadow: none;
@@ -405,12 +422,12 @@ body.noscroll {
 
 /* Webmaker ***/
 .mob-webmaker .pull {
-  background: #71150d url(/media/img/foundation/annualreport/2011/mob-webmaker.jpg) center center no-repeat;
+  background: #71150d url('/media/img/foundation/annualreport/2011/mob-webmaker.jpg') center center no-repeat;
   min-height: 260px;
   padding: 100px 120px 0;
   text-align: center;
   .open-sans-light;
-  font-size: 42px;
+  .font-size(42px);
   font-style: italic;
   color: #f7f4ec;
   text-shadow: none;
@@ -426,13 +443,13 @@ body.noscroll {
 }
 
 .mob-standards .pull {
-  background: #a63700 url(/media/img/foundation/annualreport/2011/mob-standards.jpg) center top no-repeat;
+  background: #a63700 url('/media/img/foundation/annualreport/2011/mob-standards.jpg') center top no-repeat;
   min-height: 184px;
   padding: 30px 40px 0;
   margin: 0;
   text-align: center;
   .open-sans-light;
-  font-size: 32px;
+  .font-size(32px);
   font-style: italic;
   color: #f7f4ec;
   text-shadow: none;
@@ -445,12 +462,12 @@ body.noscroll {
 
 /* Action *********/
 .act-intro .pull {
-  background: #242e39 url(/media/img/foundation/annualreport/2011/act-intro.jpg) center top no-repeat;
+  background: #242e39 url('/media/img/foundation/annualreport/2011/act-intro.jpg') center top no-repeat;
   min-height: 360px;
   padding: 130px 40px 0;
   text-align: center;
   .open-sans-light;
-  font-size: 38px;
+  .font-size(38px);
   font-style: italic;
   color: #f7f4ec;
   text-shadow: none;
@@ -465,7 +482,7 @@ body.noscroll {
 .act-donottrack {
   margin-top: -3em;
   img {
-    background: #fff url(/media/img/foundation/annualreport/2011/act-donottrack.jpg) center top no-repeat;
+    background: #fff url('/media/img/foundation/annualreport/2011/act-donottrack.jpg') center top no-repeat;
     display: block;
     padding: 130px 58px 96px;
   }
@@ -502,7 +519,7 @@ body.noscroll {
 .act-flicks img {
   display: block;
   padding: 50px 90px 36px;
-  background: rgb(80,13,20) url(/media/img/foundation/annualreport/2011/bg-curtains.jpg) center top repeat-x;
+  background: rgb(80,13,20) url('/media/img/foundation/annualreport/2011/bg-curtains.jpg') center top repeat-x;
 }
 
 .js .act-flicks .overlay {
@@ -523,7 +540,7 @@ body.noscroll {
     padding: 95px;
     text-align: center;
     vertical-align: middle;
-    font-size: 46px;
+    .font-size(46px);
     text-shadow: 0 0 3px rgba(255,255,255,.25), 0 1px 1px rgba(0,0,0,.5);
   }
   img {
@@ -611,7 +628,7 @@ body.noscroll {
       display: block;
       width: 100%;
       height: 100%;
-      background: url(/media/img/foundation/annualreport/2011/btn-play.png) center center no-repeat;
+      background: url('/media/img/foundation/annualreport/2011/btn-play.png') center center no-repeat;
       position: absolute;
       top: 0;
       left: 0;
@@ -629,27 +646,18 @@ body.noscroll {
   margin: 0 auto;
 }
 
-.jcarousel-container {
-  padding: 0 40px;
-  margin: 1em -20px;
-  position: relative;
-}
-
-.jcarousel-clip {
-  width: 740px;
+#story-slider {
   overflow: hidden;
-}
+  top: 0;
 
-#story-slider,
-#story-slider-clone {
-  position: relative;
-  overflow: hidden;
   .vcard {
     background: rgba(255,100,0,.1);
     width: 175px;
     min-height: 96px;
     margin: 0 5px;
     position: relative;
+    list-style: none;
+
     .photo {
       position: absolute;
       top: 0;
@@ -673,14 +681,14 @@ body.noscroll {
       color: #fff;
     }
     h4 {
-      font-size: 1.071em;
+      .font-size(1.071em);
       margin: 10px 0 .15em;
     }
     h5 {
-      font-size: .928em;
+      .font-size(.928em);
     }
     .note {
-      .hidden;
+      .visually-hidden();
     }
     a {
       display: block;
@@ -701,12 +709,13 @@ body.noscroll {
   padding: 0;
   text-indent: -999em;
   overflow: hidden;
-  background: transparent url(/media/img/foundation/annualreport/2011/control-arrows.png) no-repeat;
+  background: transparent url('/media/img/foundation/annualreport/2011/control-arrows.png') no-repeat;
   width: 35px;
   height: 96px;
   position: absolute;
   top: 0;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .jcarousel-container .btn-prev {
@@ -741,7 +750,7 @@ body.noscroll {
     display: block;
     padding: 20px 10px;
     height: 94px;
-    font-size: 1.285em;
+    .font-size(1.285em);
     line-height: 1.1;
     text-transform: uppercase;
     .open-sans-light;
@@ -750,16 +759,16 @@ body.noscroll {
     display: block;
     text-align: center;
     font-style: italic;
-    font-size: .611em;
+    .font-size(.611em);
     margin-top: 1em;
   }
   a.sus-faq {
     text-align: center;
-    font-size: 34px;
+    .font-size(34px);
     padding-top: 40px;
     height: 74px;
     color: @red;
-    background: url(/media/img/foundation/annualreport/2011/bg-faq.png) center center no-repeat;
+    background: url('/media/img/foundation/annualreport/2011/bg-faq.png') center center no-repeat;
     &:hover,
     &:focus,
     &:active {
@@ -795,6 +804,33 @@ body.noscroll {
   }
 }
 
+/* Tablet and Desktop overlap: 768px and beyond */
+@media only screen and (min-width: @widthTablet) {
+  .jcarousel-container {
+    padding: 0 40px;
+    margin: 1em -20px;
+    position: relative;
+
+    .btn-next, .btn-prev {
+      visibility: visible;
+    }
+  }
+
+  .jcarousel-clip {
+    position: relative;
+    overflow: hidden;
+    width: 740px;
+  }
+
+  #story-slider {
+    position: relative;
+    width: 20000em;
+    .vcard {
+      float: left;
+    }
+  }
+}
+
 /* Tablet  Layout: 768px */
 @media only screen and (min-width: @widthTablet) and (max-width: @widthDesktop) {
 
@@ -814,7 +850,7 @@ body.noscroll {
 
   .mob-fxandroid {
     h4 {
-      font-size: 32px;
+      .font-size(32px);
       min-height: 200px;
       background-position: 0 -15px;
     }
@@ -829,7 +865,7 @@ body.noscroll {
   }
 
   .mob-standards .pull {
-    font-size: 26px;
+    .font-size(26px);
     min-height: 160px;
   }
 
@@ -844,7 +880,7 @@ body.noscroll {
   .com-intro .pull {
     height: 340px;
     h3 {
-      font-size: 38px;
+      .font-size(38px);
     }
   }
 
@@ -861,10 +897,9 @@ body.noscroll {
     width: 660px;
   }
 
-  #story-slider,
-  #story-slider-clone {
+  #story-slider {
     .vcard {
-      font-size: 12px;
+      .font-size(@smallFontSize);
       min-height: 77px;
     }
   }
@@ -884,7 +919,7 @@ body.noscroll {
   }
 
   #masthead h1 {
-    font-size: 32px;
+    .font-size(32px);
     letter-spacing: -1px;
   }
 
@@ -938,7 +973,8 @@ body.noscroll {
     position: static;
     padding: 0;
     margin: 20px 0 0;
-    background: transparent none !important;
+    /* important! required for overriding many section specific selectors */
+    background: transparent none !important; /* stylelint-disable-line declaration-no-important */
     color: inherit;
     a:link,
     a:visited {
@@ -958,7 +994,7 @@ body.noscroll {
   .mob-topics {
     padding: 0 20px 20px;
     margin: 0 0 20px;
-    font-size: 12px;
+    .font-size(@smallFontSize);
     li {
       padding-top: 100px;
     }
@@ -984,7 +1020,7 @@ body.noscroll {
   .mob-webmaker .pull,
   .mob-standards .pull,
   .act-intro .pull {
-    font-size: 18px;
+    .font-size(18px);
     padding: 20px;
     min-height: 0;
     background-size: cover;
@@ -1019,7 +1055,7 @@ body.noscroll {
     background: darken(@orange, 20%);
     h3 {
       display: block;
-      font-size: 32px;
+      .font-size(32px);
       padding: 0;
     }
     img {
@@ -1054,7 +1090,7 @@ body.noscroll {
     }
     a.sus-faq {
       text-align: left;
-      font-size: 1.285em;
+      .font-size(1.285em);
       padding: 6px 20px;
       height: auto;
       background: #e5e5e5 none;
@@ -1101,7 +1137,7 @@ body.noscroll {
   }
 
   .mob-topics {
-    font-size: 18px;
+    .font-size(18px);
   }
 
   .mob-firefoxos .pull,
@@ -1109,7 +1145,7 @@ body.noscroll {
   .mob-webmaker .pull,
   .mob-standards .pull,
   .act-intro .pull {
-    font-size: 24px;
+    .font-size(24px);
     padding: 30px;
   }
 
@@ -1134,7 +1170,7 @@ body.noscroll {
 /* Various Fixes for locales */
 
 html[lang='fr'] #masthead h1 {
-  font-size:68px;
+  .font-size(68px);
 }
 
 html[lang='cs'] .mob-fxandroid h4,
@@ -1144,12 +1180,12 @@ html[lang='el'] .mob-fxandroid h4,
 html[lang='es-ES'] .mob-fxandroid h4,
 html[lang='it'] .mob-fxandroid h4,
 html[lang='sq'] .mob-fxandroid h4 {
-  font-size: 37px;
+  .font-size(37px);
   padding-left: 200px;
 }
 
 html[lang='csb'] .mob-fxandroid h4 {
-  font-size: 33px;
+  .font-size(33px);
   line-height: 45px;
 }
 
@@ -1157,26 +1193,9 @@ html[lang='el'] .sus-links ul a.sus-faq,
 html[lang='is'] .sus-links ul a.sus-faq,
 html[lang='lij'] .sus-links ul a.sus-faq,
 html[lang='pt-BR'] .sus-links ul a.sus-faq {
-  font-size: 20px;
+  .font-size(20px);
 }
 
 html[lang='sv-SE'] .sus-links ul a.sus-faq {
-  font-size: 17px;
-}
-
-
-/* No Italic in Chinese */
-html[lang='zh-CN'] body h2,
-html[lang='zh-CN'] body h3,
-html[lang='zh-CN'] body aside.pull,
-html[lang='zh-CN'] body p.pull,
-html[lang='zh-CN'] body .sus-links ul small,
-html[lang='zh-CN'] body p em,
-html[lang='zh-TW'] body h2,
-html[lang='zh-TW'] body h3,
-html[lang='zh-TW'] body aside.pull,
-html[lang='zh-TW'] body p.pull,
-html[lang='zh-TW'] body .sus-links ul small,
-html[lang='zh-TW'] body p em {
-  font-style: normal ;
+  .font-size(17px);
 }

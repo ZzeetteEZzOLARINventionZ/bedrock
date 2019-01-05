@@ -2,212 +2,674 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import "template.less";
+@import "../sandstone/lib.less";
 
-#toggler-container {
-    margin: 120px auto 40px auto;
+#wrapper {
     padding: 0;
-    width: 900px;
-    position: relative;
-    height: 225px;
-    list-style-type: none;
-    display: block;
+    width: 100%;
+}
 
-    li {
-        list-style-type: none;
-        display: block;
+.container {
+    padding: 0;
+    width: @widthDesktop - (@baseLine * 2);
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: @widthTablet - (@gridGutterWidth * 2);
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: @widthMobileLandscape;
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        width: @widthMobile - (@gridGutterWidth * 2);
+    }
+}
+
+/*--------------------------------------------------------------------------*/
+// Main header and page masthead
+
+#masthead {
+    background: #002275;
+    min-height: 52px;
+    padding: 0;
+    width: 100%;
+
+    nav {
         margin: 0;
-        padding: 0;
-        position: absolute;
-        top: 25px;
-        -webkit-transition: all 0.6s ease-in-out;
-        -moz-transition: all 0.6s ease-in-out;
+        li {
+            .font-size(18px);
+
+            a:link,
+            a:visited {
+                color: #fff;
+            }
+        }
+    }
+
+    .logo {
+        .font-size(16px);
+        float: right;
+        margin: 10px 0 0 12px;
 
         a {
-            display: block;
-            position: relative;
-            top: 0;
-            -webkit-transition: all 0.1s ease-in-out;
-            -moz-transition: all 0.1s ease-in-out;
+            background: url('/media/img/pebbles/moz-wordmark-light-reverse.svg') no-repeat;
+            .background-size(100px, 32px);
+            .image-replaced;
+            display: inline-block;
+            height: 32px;
+            width: 100px;
+        }
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+
+        .container {
+            width: 100%;
         }
 
-        img {
-            height: 150px;
-            width: 150px;
-            -webkit-transition: all 0.6s ease-in-out;
-            -moz-transition: all 0.6s ease-in-out;
-            -ms-interpolation-mode: bicubic;
+        nav {
+            padding: 0;
+
+            li {
+                a:link,
+                a:visited {
+                    .font-size(@baseFontSize);
+                    color: @textColorSecondary;
+                }
+            }
         }
 
-        a:hover {
-            top: -5px;
+        #nav-main-menu {
+            margin: 20px 0 0;
+
+            &:before {
+                left: 12px;
+            }
+        }
+
+        .logo {
+            margin-right: 12px;
         }
     }
 }
 
-/* Default styles */
+.html-rtl #masthead .logo {
+    float: left;
+    margin: 10px 12px 0 0;
+}
 
-.pager-tabs {
-    #beta-link { left: 335px; z-index: 3; top: 0; }
-    #aurora-link    { left: 110px; z-index: 1; }
-    #firefox-link  { left: 635px; z-index: 2; }
+@media only screen and (max-width: @breakTablet) {
 
-    #beta-link img {
-        height: 225px;
-        width: 225px;
+    .html-rtl #masthead {
+
+        #nav-main-menu:before {
+            right: 12px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            margin-right: 0;
+        }
     }
 }
 
-.pager-page {
-    position: relative;
-    text-align: center;
-    .channel-title {
-        position: absolute;
-        top: -380px;
+#nav-main {
+
+    .toggle {
+        background: transparent url('/media/img/firefox/template/icon-menu.svg') center center no-repeat;
+        .background-size(22px auto);
+        height: 51px;
         left: 0;
-        width: 100%;
-    }
-}
+        top: 0;
+        width: 51px;
 
-.no-js .pager-page .channel-title {
-    position: static;
-}
-
-/* Selected styles */
-
-.pager-selected-firefox #beta-link   { left: 110px; z-index: 1; }
-.pager-selected-firefox #aurora-link { left: 635px; z-index: 2; }
-
-.pager-selected-beta #aurora-link  { left: 110px; z-index: 1; }
-.pager-selected-beta #firefox-link { left: 635px; z-index: 2; }
-
-.pager-selected-aurora #firefox-link { left: 110px; z-index: 1; }
-.pager-selected-aurora #beta-link    { left: 635px; z-index: 2; }
-
-.pager-selected-firefox #firefox-link,
-.pager-selected-beta    #beta-link,
-.pager-selected-aurora  #aurora-link {
-    top: 0;
-    left: 335px;
-    z-index: 3;
-}
-
-.pager-selected-firefox #firefox-link a:hover,
-.pager-selected-beta    #beta-link    a:hover,
-.pager-selected-aurora  #aurora-link  a:hover {
-    top: 0;
-}
-
-/* To override default image styles */
-
-.pager-selected-firefox #beta-link,
-.pager-selected-aurora  #beta-link {
-    top: 25px;
-}
-
-.pager-selected-firefox #beta-link img,
-.pager-selected-aurora  #beta-link img {
-    width: 150px;
-    height: 150px;
-}
-
-.pager-selected-firefox #firefox-link img,
-.pager-selected-beta    #beta-link img,
-.pager-selected-aurora  #aurora-link img {
-    height: 225px;
-    width: 225px;
-}
-
-#carousel-left,
-#carousel-right {
-    position: absolute;
-    display: block;
-    left: 48px;
-    top: 70px;
-    height: 80px;
-    width: 78px;
-    background: url(/media/img/firefox/channel/carousel-arrows.png) 0 0 no-repeat;
-}
-
-#carousel-right {
-    left: auto;
-    right: 48px;
-    background-position: 0 -100px;
-}
-
-#main-content {
-    background: url(/media/img/firefox/channel/carousel-bg.png) 50% 70px no-repeat;
-}
-
-.download-box {
-    .inline-block;
-    margin: 0 (@gridGutterWidth / 2);
-    text-align: left;
-    .download-button .download-link {
-        display: block;
-        margin-left: 0;
-        height: auto;
-        line-height: @baseLine * 0.75;
-       .download-content {
-            background: url(/media/img/sandstone/buttons/arrow-large.png) no-repeat 12px 50%;
-            margin-left: 0;
-            height: auto;
-        }
-        .download-title {
-            background: none;
-            padding: 8px 0 2px 0;
-            height: auto;
-            .open-sans;
-            font-size: 18px;
-            text-shadow: 0 -1px rgba(0,0,0,0.2);
-        }
-        .download-subtitle {
-            color: #b8e779;
-            height: auto;
-            text-shadow: 0 -1px rgba(0,0,0,0.2);
-            display: block;
-            padding-bottom: 8px;
+        &.open {
+            background-position: center center;
         }
     }
 }
 
-.download-box.mobile .download-button .download-link {
-    position: relative;
-}
-
-.download-box.mobile .download-button .download-link:after {
-    background: url(/media/img/firefox/channel/download-android.png) 0 0 no-repeat;
-    position: absolute;
-    content: "";
-    height: 53px;
-    width: 55px;
+.html-rtl #nav-main .toggle {
     right: 0;
-    bottom: 0;
 }
 
-p.more {
-    margin-top: @baseLine;
-    margin-bottom: @baseLine / 2;
-}
+.main-header {
+    background: #0060df;
+    background: url('/media/img/firefox/channel/header-bg-tail.png') top -220px center no-repeat,
+                linear-gradient(148deg, #0060df 7%, #0479f4 20%, #0681fc 27%, #02bdf1 60%, #01d3f0 67%, #05f0e6 100%);
+    text-align: center;
 
-.warning {
-    color: @textColorSecondary;
-}
-
-.space {
-    #main-content {
-    background-image: url(/media/img/firefox/channel/carousel-bg-space.png);
-    }
-    .pager-page h3 {
-        color: @textColorSpaceYellow;
-    }
-    .warning {
-        color: #888;
+    h1, h2 {
+        color: #fff;
+        text-shadow: none;
     }
 
+    h1 {
+        .at2x('/media/img/logos/firefox/logo-quantum.png', 130px, 130px);
+        .background-size(130px 130px);
+        .font-size(48px);
+        .open-sans;
+        background-position: top 40px center;
+        background-repeat: no-repeat;
+        font-weight: bold;
+        padding: 175px 0 @baseLine;
+    }
+
+    h2 {
+        .font-size(30px);
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 23em;
+        padding-bottom: 32px;
+    }
+
+    @media only screen and (max-width: @breakDesktop) {
+
+        h1 {
+            .font-size(44px);
+        }
+
+        h2 {
+            .font-size(24px);
+        }
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+
+        h1 {
+            .font-size(40px);
+        }
+
+        h2 {
+            .font-size(20px);
+        }
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+
+        h1 {
+            .font-size(36px);
+        }
+
+        h2 {
+            .font-size(18px);
+        }
+    }
 }
 
-.pager-page h3 {
-    margin-bottom: @baseLine;
+/*--------------------------------------------------------------------------*/
+// Platform navigation
+
+.platform-nav {
+    background: #003eaa;
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+            .font-size(24px);
+            .inline-block;
+            margin: 0 40px;
+            padding: @baseLine 0;
+
+            a:link,
+            a:visited {
+                .transition(color .1s ease-in-out);
+                color: #fff;
+            }
+
+            a:hover,
+            a:active,
+            a:focus {
+                .transition(color .1s ease-in-out);
+                color: darken(#fff, 10%);
+                text-decoration: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width: @breakDesktop) {
+
+        ul li {
+            .font-size(22px);
+        }
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+
+        .container {
+            width: 100%;
+        }
+
+        ul li {
+            .font-size(20px);
+            background: #dcdcdc;
+            border-top: 2px solid #fff;
+            display: block;
+            margin: 0;
+            padding: (@baseLine / 2) 0;
+            width: auto;
+
+            a:link,
+            a:visited {
+                color: @linkBlue;
+            }
+
+            a:hover,
+            a:active,
+            a:focus {
+                color: @linkBlueHover;
+            }
+        }
+    }
 }
 
+html[lang^="en"] {
+    .platform-nav ul li {
+        text-transform: uppercase;
+
+        &:last-child {
+            text-transform: none;
+        }
+    }
+}
+
+#platform-desktop .platform-nav .nav-desktop,
+#platform-android .platform-nav .nav-android,
+#platform-ios .platform-nav .nav-ios {
+    border-bottom: 5px solid #fff;
+
+    a:hover,
+    a:active,
+    a:focus {
+        color: #fff;
+        cursor: default;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        background: #1f366c;
+        border-bottom: none;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active,
+        a:focus {
+            color: #fff;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------*/
+// Channel components
+
+.channel {
+    padding-top: @baseLine * 2;
+    text-align: center;
+
+    header {
+        background-position: top left;
+        background-repeat: no-repeat;
+        float: left;
+        margin-bottom: @baseLine;
+        min-height: 220px;
+        padding-left: 240px;
+        text-align: left;
+        width: 460px;
+
+        h2 {
+            .font-size(36px);
+            font-weight: bold;
+            text-shadow: none;
+        }
+
+        p {
+            .font-size(28px);
+        }
+    }
+
+    .download-button,
+    .testflight-cta {
+        float: right;
+        margin-bottom: @baseLine;
+        max-width: 220px;
+    }
+
+    .fx-privacy-link {
+        a:link,
+        a:visited {
+            color: @linkBlue;
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            color: @linkBlueHover;
+        }
+    }
+
+    .notice {
+        .font-size(18px);
+        clear: both;
+        text-align: left;
+    }
+
+    footer {
+        background: #f0f0f2;
+        margin-top: 10px;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                .font-size(18px);
+                .inline-block;
+                margin: 0;
+                padding: @baseLine 0;
+
+                &:after {
+                    color: #56565a;
+                    content: '|';
+                    margin: 0 10px;
+                }
+
+                &:last-child:after {
+                    content: none;
+                }
+            }
+        }
+
+
+        a:link,
+        a:visited {
+            color: @linkBlue;
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            color: @linkBlueHover;
+        }
+    }
+
+    @media only screen and (max-width: @breakDesktop) {
+        header {
+            min-height: 160px;
+            padding-left: 180px;
+            width: 270px;
+
+            h2 {
+                .font-size(30px);
+            }
+
+            p {
+                .font-size(24px);
+            }
+        }
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        header {
+            background-position: top center;
+            float: none;
+            min-height: 0;
+            padding: 160px 0 0;
+            text-align: center;
+            width: auto;
+        }
+
+        .download-button,
+        .testflight-cta {
+            float: none;
+            text-align: center;
+        }
+
+        .notice {
+            .font-size(@baseFontSize);
+            text-align: center;
+        }
+
+        footer ul {
+            padding-bottom: @baseLine;
+
+            li {
+                .font-size(@largeFontSize);
+                display: block;
+                padding: @baseLine 0 0;
+
+                &:after {
+                    content: none;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+
+        header {
+            padding: 150px 0 0;
+
+            h2 {
+                .font-size(26px);
+            }
+
+            p {
+                .font-size(22px);
+            }
+        }
+
+        .notice,
+        footer ul li {
+            .font-size(@baseFontSize);
+        }
+    }
+}
+
+.html-rtl .channel {
+
+    header {
+        background-position: top right;
+        float: right;
+        padding-left: 0;
+        padding-right: 240px;
+        text-align: right;
+    }
+
+    .download-button,
+    .testflight-cta {
+        float: left;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+
+        header {
+            background-position: top center;
+            float: none;
+            padding-right: 0;
+            text-align: center;
+        }
+
+        .download-button,
+        .testflight-cta {
+            float: none;
+        }
+    }
+}
+
+#beta header {
+    .at2x('/media/img/logos/firefox/beta-logo.png', 180px, 180px);
+    .background-size(180px 180px);
+
+    @media only screen and (max-width: @breakDesktop) {
+        .background-size(150px 150px);
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        .background-size(130px 130px);
+    }
+}
+
+#developer header {
+    .at2x('/media/img/logos/firefox/logo-developer-quantum.png', 180px, 180px);
+    .background-size(180px 180px);
+
+    @media only screen and (max-width: @breakDesktop) {
+        .background-size(150px 150px);
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        .background-size(130px 130px);
+    }
+}
+
+#nightly header {
+    .at2x('/media/img/logos/firefox/nightly-logo.png', 180px, 180px);
+    .background-size(180px 180px);
+
+    @media only screen and (max-width: @breakDesktop) {
+        .background-size(150px 150px);
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        .background-size(130px 130px);
+    }
+}
+
+#testflight header {
+    .at2x('/media/img/firefox/channel/testflight.png', 180px, 136px);
+    min-height: 156px;
+
+    @media only screen and (max-width: @breakDesktop) {
+        .background-size(150px 113px);
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        padding: 130px 0 0;
+    }
+}
+
+/*--------------------------------------------------------------------------*/
+// Help out section
+
+#help-out section {
+    margin: (@baseLine * 2) 0 (@baseLine * 3);
+    width: 350px;
+
+    &.bugzilla {
+        .at2x('/media/img/firefox/channel/alert-icon.png', 130px, 114px);
+        background-position: top 20px center;
+        background-repeat: no-repeat;
+        float: left;
+        padding-top: 162px;
+    }
+
+    &.test-pilot {
+        .at2x('/media/img/firefox/channel/test-pilot.png', 200px, 162px);
+        background-position: top center;
+        background-repeat: no-repeat;
+        float: right;
+        padding-top: 162px;
+    }
+
+    h3 {
+        .font-size(24px);
+        .open-sans;
+        line-height: 1.3;
+        margin-bottom: @baseLine;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        li {
+            .font-size(18px);
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    @media only screen and (max-width: @breakDesktop) {
+
+        h3 {
+            .font-size(22px);
+        }
+
+        ul li {
+            .font-size(@largeFontSize);
+        }
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: auto;
+
+        &.bugzilla,
+        &.test-pilot {
+            float: none;
+        }
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+
+        h3 {
+            .font-size(20px);
+        }
+
+        ul li {
+            .font-size(@baseFontSize);
+        }
+    }
+}
+
+#platform-android #help-out section,
+#platform-ios #help-out section {
+
+    &.bugzilla {
+        float: none;
+        margin: (@baseLine * 2) auto (@baseLine * 3);
+        text-align: center;
+        width: auto;
+    }
+}
+
+.html-rtl #help-out section {
+
+    &.bugzilla {
+        float: right;
+    }
+
+    &.test-pilot {
+        float: left;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+
+        &.bugzilla,
+        &.test-pilot {
+            float: none;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------*/
+// Newsletter
+
+#newsletter-subscribe {
+
+    h3 > span {
+        font-weight: bold;
+    }
+
+    #newsletter-form-thankyou.newsletter-form {
+        margin-left: 0;
+        width: auto;
+    }
+}

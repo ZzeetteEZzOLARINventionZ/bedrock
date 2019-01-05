@@ -17,21 +17,31 @@ import re
 from functools import partial
 
 from django.conf import settings
-from django.core.cache import cache
-from django.utils import translation
+from django.core.cache import caches
 from django.utils.functional import lazy
-
 from jinja2 import Markup
-from tower.management.commands.extract import tweak_message
+from product_details import product_details
 
+from lib.l10n_utils import translation
+from lib.l10n_utils.utils import ContainsEverything, strip_whitespace
 
+ALL_THE_THINGS = ContainsEverything()
 FORMAT_IDENTIFIER_RE = re.compile(r"""(%
                                       (?:\((\w+)\))? # Mapping key
                                       s)""", re.VERBOSE)
+TAG_REGEX = re.compile(r"^## ([\w-]+) ##")
+cache = caches['l10n']
 
 
-def parse(path):
-    """Parse a dotlang file and return a dict of translations."""
+def parse(path, skip_untranslated=True, extract_comments=False):
+    """
+    Parse a dotlang file and return a dict of translations.
+    :param path: Absolute path to a lang file.
+    :param skip_untranslated: Exclude strings for which the ID and translation
+                              match.
+    :param extract_comments: Extract one line comments from template if True
+    :return: dict
+    """
     trans = {}
 
     if not os.path.exists(path):
@@ -39,22 +49,36 @@ def parse(path):
 
     with codecs.open(path, 'r', 'utf-8', errors='replace') as lines:
         source = None
+        comment = None
 
         for line in lines:
+            l10n_tag = None
             if u'�' in line:
                 mail_error(path, line)
 
             line = line.strip()
-            if line == '' or line[0] == '#':
+            if not line:
+                continue
+
+            if line[0] == '#':
+                comment = line.lstrip('#').strip()
                 continue
 
             if line[0] == ';':
                 source = line[1:]
             elif source:
                 for tag in ('{ok}', '{l10n-extra}'):
-                    if line.endswith(tag):
+                    if line.lower().endswith(tag):
+                        l10n_tag = tag.strip('{}')
                         line = line[:-len(tag)]
-                trans[source] = line.strip()
+                line = line.strip()
+                if skip_untranslated and source == line and l10n_tag != 'ok':
+                    continue
+                if extract_comments:
+                    trans[source] = [comment, line]
+                    comment = None
+                else:
+                    trans[source] = line
 
     return trans
 
@@ -79,7 +103,11 @@ def translate(text, files):
     """Search a list of .lang files for a translation"""
     lang = fix_case(translation.get_language())
 
-    tweaked_text = tweak_message(text)
+    # don't attempt to translate the default language.
+    if lang == settings.LANGUAGE_CODE:
+        return Markup(text)
+
+    tweaked_text = strip_whitespace(text)
 
     for file_ in files:
         key = "dotlang-%s-%s" % (lang, file_)
@@ -107,6 +135,7 @@ def translate(text, files):
 
 def _get_extra_lang_files():
     frame = inspect.currentframe()
+    new_lang_files = []
     if frame is None:
         if settings.DEBUG:
             import warnings
@@ -123,10 +152,10 @@ def _get_extra_lang_files():
         if new_lang_files:
             if isinstance(new_lang_files, basestring):
                 new_lang_files = [new_lang_files]
-    return new_lang_files
+    return [lf for lf in new_lang_files if lf not in settings.DOTLANG_FILES]
 
 
-def _(text, *args, **kwargs):
+def gettext(text, *args, **kwargs):
     """
     Translate a piece of text from the global files. If `LANG_FILES` is defined
     in the module from which this function is called, those files (or file)
@@ -156,14 +185,19 @@ def _(text, *args, **kwargs):
     return text
 
 
-_lazy_proxy = lazy(_, unicode)
+_lazy_proxy = lazy(gettext, unicode)
 
 
-def _lazy(*args, **kwargs):
+def gettext_lazy(*args, **kwargs):
     lang_files = _get_extra_lang_files()
     if lang_files:
         return partial(_lazy_proxy, lang_files=lang_files)(*args, **kwargs)
     return _lazy_proxy(*args, **kwargs)
+
+
+# backward compat
+_ = gettext
+_lazy = gettext_lazy
 
 
 def get_lang_path(path):
@@ -185,7 +219,7 @@ def get_lang_path(path):
     return base
 
 
-def lang_file_is_active(path, lang):
+def lang_file_is_active(path, lang=None):
     """
     If the lang file for a locale exists and has the correct comment returns
     True, and False otherwise.
@@ -193,20 +227,99 @@ def lang_file_is_active(path, lang):
     :param lang: the language code
     :return: bool
     """
+    return lang_file_has_tag(path, lang, 'active')
+
+
+def lang_file_tag_set(path, lang=None):
+    """Return a set of tags for a specific lang file and locale.
+
+    :param path: the relative lang file name
+    :param lang: the language code or the lang of the request if omitted
+    :return: set of strings
+    """
+    if settings.DEV or lang == settings.LANGUAGE_CODE:
+        return ALL_THE_THINGS
+
+    lang = lang or fix_case(translation.get_language())
     rel_path = os.path.join('locale', lang, '%s.lang' % path)
-    cache_key = 'active:%s' % rel_path
-    is_active = cache.get(cache_key)
-    if is_active is None:
-        is_active = False
+    cache_key = 'tag:%s' % rel_path
+    tag_set = cache.get(cache_key)
+    if tag_set is None:
+        tag_set = set()
         fpath = os.path.join(settings.ROOT, rel_path)
         try:
             with codecs.open(fpath, 'r', 'utf-8', errors='replace') as lines:
-                firstline = lines.readline()
-                if firstline.startswith('## active ##'):
-                    is_active = True
+                for line in lines:
+                    # Filter out Byte order Mark
+                    line = line.replace(u'\ufeff', '')
+                    m = TAG_REGEX.match(line)
+                    if m:
+                        tag_set.add(m.group(1))
+                    else:
+                        # Stop at the first non-tag line.
+                        break
         except IOError:
             pass
 
-        cache.set(cache_key, is_active, settings.DOTLANG_CACHE)
+        cache.set(cache_key, tag_set, settings.DOTLANG_CACHE)
 
-    return is_active
+    return tag_set
+
+
+def lang_file_has_tag(path, lang=None, tag='active'):
+    """
+    Return True if the lang file exists and has a line like "^## tag ##"
+    at the top. Stops looking at the line that doesn't have a tag.
+
+    Always returns true for the default lang.
+
+    :param path: the relative lang file name
+    :param lang: the language code or the lang of the request if omitted
+    @param tag: The string that should appear between ##'s. Can contain
+       alphanumerics and "_".
+    @return: bool
+    """
+    return tag in lang_file_tag_set(path, lang)
+
+
+def get_translations_for_langfile(langfile):
+    """
+    Return the list of available translations for the langfile.
+
+    :param langfile: the path to a lang file, retrieved with get_lang_path()
+    :return: list, like ['en-US', 'fr']
+    """
+
+    cache_key = 'translations:%s' % langfile
+    translations = cache.get(cache_key, None)
+
+    if translations:
+        return translations
+
+    translations = []
+    for lang in settings.PROD_LANGUAGES:
+        if (lang in product_details.languages and
+                (lang == settings.LANGUAGE_CODE or
+                 lang_file_is_active(langfile, lang))):
+            translations.append(lang)
+
+    cache.set(cache_key, translations, settings.DOTLANG_CACHE)
+    return translations
+
+
+def get_translations_native_names(locales):
+    """
+    Return a dict of locale codes and native language name strings.
+
+    Returned dict is suitable for use in view contexts and is filtered to only codes in PROD_LANGUAGES.
+
+    :param locales: list of locale codes
+    :return: dict, like {'en-US': 'English (US)', 'fr': 'Français'}
+    """
+    translations = {}
+    for locale in locales:
+        if locale in settings.PROD_LANGUAGES:
+            language = product_details.languages.get(locale)
+            translations[locale] = language['native'] if language else locale
+
+    return translations

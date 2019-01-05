@@ -8,6 +8,11 @@
 How to contribute
 =================
 
+Before diving into code it might be worth reading through the
+:ref:`Developing on Bedrock<coding>` documentation, which contains
+useful information and links to our coding guidelines for Python, Django,
+JavaScript and CSS.
+
 Git workflow
 ------------
 When you want to start contributing, you should create a branch from master.
@@ -60,85 +65,95 @@ Once your code has been positively reviewed, it will be deployed shortly after.
 So if you want feedback on your code but it's not ready to be deployed, you
 should note it in the pull request.
 
-Getting a new Bedrock page online
----------------------------------
-On our servers, Bedrock pages are accessible behind the ``/b/`` prefix. So if a
-page is accessible at this URL locally::
+Squashing your commits
+----------------------
 
-    http://localhost:8000/foo/bar
+Should your pull request contain more than one commit, sometimes we may ask you
+to squash them into a single commit before merging. You can do this with `git rebase`.
 
-then on our servers, it will be accessible at::
+As an example, let's say your pull request contains two commits. To squash them
+into a single commit, you can follow these instructions:
 
-    http://www.mozilla.org/b/foo/bar
+    git rebase -i HEAD~2
 
-When you're ready to make a page available to everyone, we need to remove that
-/b/ prefix. We handle that with Apache RewriteRule.
+You will then get an editor with your two commits listed. Change the second
+commit from `pick` to `fixup`, then save and close. You should then be able to
+verify that you only have one commit now with `git log`.
 
-1. Open an `IT bug`_
-2. Provide a RewriteRule that looks like:
+To push to GitHub again, because you "altered the history" of the repo by merging
+the two commits into one, you'll have to `git push -f` instead of just `git push`.
 
-    .. code-block:: apache
-
-        # bug 123456
-        RewriteRule ^/(\w{2,3}(?:-\w{2}(?:-mac)?)?/)?foo/bar(.*)$ /b/$1foo/bar$2 [PT]
 
 Server architecture
 -------------------
 **Demos**
 
-- *URLs:* http://www-demo1.allizom.org/ , http://www-demo2.allizom.org/ and
-  http://www-demo3.allizom.org/
-- *PHP SVN branch:* trunk, updated every 10 minutes
-- *Bedrock locale SVN branch:* trunk, updated every 10 minutes
-- *Bedrock Git branch:* any branch we want, manually updated
+- *URLs:*
+  - http://www-demo1.allizom.org/
+  - http://www-demo2.allizom.org/
+  - http://www-demo3.allizom.org/
+  - http://www-demo4.allizom.org/
+  - http://www-demo5.allizom.org/
+- *Bedrock locales:* dev repo
+- *Bedrock Git branch:* ``demo/1``, ``demo/2``, etc.
+
+**On-demand demos**
+
+- *URLs:* Demo instances can also be spun up on-demand by pushing a branch to the mozilla
+  bedrock repo that matches a specific naming convention (the branch name must start with
+  ``demo/``). Jenkins will then automate spinning up a demo instance based on that
+  branch. For example, pushing a branch named ``demo/feature`` would create a demo
+  instance with the following URL: ``https://bedrock-demo-feature.us-west.moz.works/``
+- *Bedrock locales:* dev repo
+- *Bedrock Git branch:* any branch named starting with ``demo/``
+
+.. Note::
+
+    Deployed demo instances are not yet automatically cleaned up when branches are deleted,
+    so to avoid lots of instances piling up it is currently recommended to try and limit
+    a single demo instance per developer, reusing a branch such as `demo/<your_username>`.
 
 **Dev**
 
 - *URL:* http://www-dev.allizom.org/
-- *PHP SVN branch:* trunk, updated every 10 minutes
-- *Bedrock locale SVN branch:* trunk, updated every 10 minutes
-- *Bedrock Git branch:* master, updated every 10 minutes
+- *Bedrock locales:* dev repo
+- *Bedrock Git branch:* master, deployed on git push
 
 **Stage**
 
 - *URL:* http://www.allizom.org/
-- *PHP SVN branch:* tags/stage, updated every 10 minutes
-- *Bedrock locale SVN branch:* trunk, updated every 10 minutes
-- *Bedrock Git branch:* master, updated manually
+- *Bedrock locales:* prod repo
+- *Bedrock Git branch:* prod, deployed on git push with date-tag
 
 **Production**
 
 - *URL:* http://www.mozilla.org/
-- *PHP SVN branch:* tags/production, updated every 10 minutes
-- *Bedrock locale SVN branch:* trunk, updated every 10 minutes
-- *Bedrock Git branch:* master, updated manually
+- *Bedrock locales:* prod repo
+- *Bedrock Git branch:* prod, deployed on git push with date-tag
 
-We use Chief for the manual deploys. You can check the currently deployed git
-commit by checking https://www.mozilla.org/media/revision.txt.
-
-If you want to know more and you have an LDAP account, you can check the
-`IT documentation`_.
+You can check the currently deployed git commit by checking https://www.mozilla.org/revision.txt.
 
 Pushing to production
 ---------------------
 We're doing pushes as soon as new work is ready to go out.
 
-After doing a push, the "pusher" needs to update the bugs that have been pushed
-with a quick message stating that the code was deployed. Chief will send on
-#www a URL with all commits that have been deployed.
+After doing a push, those who are responsible for implementing changes need to update
+the bugs that have been pushed with a quick message stating that the code was deployed.
 
 If you'd like to see the commits that will be deployed before the push run the
 following command:
 
     .. code-block:: bash
 
-        open https://github.com/mozilla/bedrock/compare/`curl -sS https://www.mozilla.org/media/revision.txt`...master
+        ./bin/open-compare.py
 
-This should work on a Mac. On other platforms that support a bash compatible
-shell substitute `open` for a command that will open a web browser and make
-sure `curl` is installed.
+This will discover the currently deployed git hash, and open a compare URL at github
+to the latest master. Look at ``open-compare.py -h`` for more options.
+
+We automate pushing to production via tagged commits (see :ref:`tagged-commit`)
 
 .. _Git book: http://git-scm.com/book
 .. _how to write good git commit messages: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 .. _IT documentation: https://mana.mozilla.org/wiki/pages/viewpage.action?pageId=1802733
 .. _IT bug: https://bugzilla.mozilla.org/enter_bug.cgi?product=mozilla.org&format=itrequest
+.. _CircleCI: https://circleci.com/

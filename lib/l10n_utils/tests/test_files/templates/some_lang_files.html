@@ -5,6 +5,7 @@
 {% extends "no_lang_files.html" %}
 
 {% block content %}
-    {% add_lang_files "dude" "walter" %}
-    {{ _('Content yo!') }}
+    {% add_lang_files "dude" "walter" "main" %}
+    {# L10n: Said angrily, loudly, and repeatedly. #}
+    {{ _('Is this your homework Larry?') }}
 {% endblock %}

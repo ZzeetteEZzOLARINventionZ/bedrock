@@ -1,0 +1,58 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends 'base-pebbles.html' %}
+
+{% set_lang_files "mozorg/newsletters" %}
+
+{% block page_title %}
+  {# L10n: line break for visual formatting #}
+  {% if l10n_has_tag('mozilla_newsletter_copy') %}
+    {{ _('Sign up, read up,<br> stay informed.') }}
+  {% else %}
+    {{ _('Sign up. Read up.<br> Make a difference.') }}
+  {% endif %}
+{% endblock page_title %}
+
+{% block page_desc %}
+  {% if l10n_has_tag('mozilla_newsletter_copy') %}
+    {{ _('Get smart on the issues affecting your life online.') }}
+  {% else %}
+    {{ _('Get the Mozilla newsletter to stay informed about issues challenging the health of the Internet and to discover how you can get involved.') }}
+  {% endif %}
+{% endblock %}
+
+{% block body_class %}newsletter-mozilla{% endblock %}
+
+{% block page_css %}
+  {{ css_bundle('newsletter-mozilla') }}
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle('newsletter-mozilla') }}
+{% endblock %}
+
+{% block site_header %}{% endblock %}
+
+{% block content %}
+<main>
+  <header class="section section-intro" id="intro">
+    <div class="content">
+      <div id="tabzilla">
+        <a href="{{ url('mozorg.home') }}" data-link-type="nav" data-link-name="tabzilla">Mozilla</a>
+      </div>
+      <h1 class="page-title">{{ self.page_title() }}</h1>
+    </div>
+  </header>
+
+  <section class="section section-subscribe" id="subscribe">
+    <div class="content">
+      <h2 class="section-title">{{ self.page_desc() }}</h2>
+
+      {{ email_newsletter_form(newsletters='mozilla-foundation', include_title=False, spinner_color='#c13832', button_class='button-red') }}
+
+    </div>
+  </section>
+</main>
+{% endblock %}

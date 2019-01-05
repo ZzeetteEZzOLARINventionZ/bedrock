@@ -1,0 +1,1304 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "base-pebbles.html" %}
+
+{% block page_title %}{{ _('Mozilla Leadership') }}{% endblock %}
+{% block body_id %}about-leadership{% endblock %}
+{% block body_class %}about-leadership{% endblock %}
+{% block body_attrs %}{{ super() }} data-global-nav-current-link="about-us"{% endblock %}
+
+{% block page_css %}
+  {{ css_bundle('about-leadership') }}
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle('about-leadership') }}
+{% endblock %}
+
+{% block site_header_logo %}{% endblock %}
+
+{% block content %}
+<main role="main">
+  <div class="snapshot-header">
+    <div class="background">
+      <span class="snap shot-four"><span></span></span>
+      <span class="snap shot-five"><span></span></span>
+      <span class="snap shot-six"><span></span></span>
+      <span class="snap shot-seven"><span></span></span>
+      <span class="snap shot-eight"><span></span></span>
+      <span class="snap shot-nine"><span></span></span>
+      <span class="snap shot-ten"><span></span></span>
+      <span class="snap shot-eleven"><span></span></span>
+      <span class="snap shot-twelve"><span></span></span>
+      <span class="snap shot-thirteen"><span></span></span>
+    </div>
+    <div class="foreground">
+      <span class="snap shot-one"><span>{{ high_res_img('mozorg/about/leadership/header/snap-fore-msurman.jpg', {'alt': '', 'width': '230', 'height': '230'}) }}</span></span>
+      <span class="snap shot-two"><span>{{ high_res_img('mozorg/about/leadership/header/snap-fore-mbaker.jpg', {'alt': '', 'width': '230', 'height': '230'}) }}</span></span>
+      <span class="snap shot-three"><span>{{ high_res_img('mozorg/about/leadership/header/snap-fore-cbeard.jpg', {'alt': '', 'width': '230', 'height': '230'}) }}</span></span>
+    </div>
+  </div>
+
+  <header class="page-header section">
+    <div class="content">
+
+      <h1 class="page-title">{{ _('Leadership') }}</h1>
+      <div class="page-intro">
+        <p>{{ _('Our leadership team is made up of both paid staff and volunteers with expertise building products and empowering communities that further our non-profit mission.') }}</p>
+      </div>
+
+      <nav id="page-nav">
+        <ul>
+          <li><a href="#management">{{ _('Management Teams') }}</a></li>
+          <li><a href="#reps-council">{{ _('Mozilla Reps Council') }}</a></li>
+          <li><a href="#directors">{{ _('Boards of Directors') }}</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <section id="management" class="section section-group">
+    <div class="content">
+
+    <h2 class="section-title">{{ _('Management Teams') }}</h2>
+
+    <h3 class="group-title" id="mgmt-corp"><a href="{{ url('foundation.moco') }}">{{ _('Mozilla Corporation') }}</a></h3>
+
+    <div class="gallery mgmt-corp">
+      <article id="mitchell-baker" data-id="mitchell-baker" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mitchell-baker.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Mitchell Baker</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chairwoman') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 1998</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/MitchellBaker">@MitchellBaker</a></li>
+            <li><a class="url website" itemprop="url" rel="external" href="https://blog.lizardwrangler.com">lizardwrangler.com</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/mitchell/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Mitchell-Baker.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#mitchell-baker">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Mitchell Baker co-founded the Mozilla Project to support the open, innovative web and ensure it continues offering opportunities for everyone. As Chairwoman of Mozilla, Mitchell Baker is responsible for organizing and motivating a massive, worldwide, collective of employees and volunteers who are building the internet as a global public resource, open and accessible to all. Mitchell is deeply engaged in developing product offerings that promote the mission of empowering individuals. She also guides the overall scope and direction of Mozilla’s mission. Mitchell has written the key documents that set out Mozilla's enduring mission and commitments – the Mozilla Public License in 1998, the Mozilla Manifesto in 2007 and the Mozilla Manifesto Addendum – also known as the Pledge for a Healthy Internet – in 2018.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mitchell is a strong advocate for the open internet, open source, and the importance of connecting technology to its impact on individuals and society.  She is highly regarded as one of the pioneers of the web and bringing the open internet to consumers. She was instrumental in Netscape’s decision in 1998 to release its source code to the public. This later led to the release of the Firefox browser and the creation of the Mozilla Foundation as a global technology force that spans software product development, educational initiatives, and participatory movements. After co-founding the Mozilla Project, Mitchell served as its general manager and CEO from 1999 until January 2008, when the organization’s rapid growth encouraged her to split her responsibilities and add a CEO.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mitchell is a member of the Advisory Boards of the Oxford Internet Institute and the MIT Initiative on the Digital Economy. She is an MIT Media Lab Research Affiliate with the Open Agriculture Initiative, and a Board Member of OpenMRS, Inc., which develops open source medical records systems for use in resource-constrained environments. She co-chaired the U.S. Department of Commerce Digital Economy Board of Advisors from its inception in March 2016 until August 2017, served on the United Nations High Level Panel on Women’s Economic Empowerment, and the ICANN High Level Panel on Global Internet Cooperation and Governance Mechanisms. A native of the San Francisco Bay Area, Mitchell received her B.A. in Asian Studies from UC Berkeley and her J.D. from Berkeley Law.
+          {% endtrans %}
+          </p>
+
+          <p>
+            <em>
+            {% trans %}
+              TIME Magazine profiled Mitchell in its global list of “100 Most Influential People” under “Scientists and Thinkers”. Bloomberg listed her as one of the “25 Most Influential People on the Web”. She was honored as winner of the Anita Borg Institute’s 2009 Women of Vision Award and received the Aenne Burda Award for Creative Leadership in 2010. In 2012, Mitchell was inducted into the founding group of the <a rel="external" href="http://www.internethalloffame.org/inductees/mitchell-baker">Internet Society’s Hall of Fame</a>. In 2018 she received the Webby Lifetime Achievement Award. She also received an honorary doctorate from the Universite Catholique de Louvain in Belgium. She has written for the Atlantic, Quartz, CNN.com and Les Annales Des Mines and appeared on NBC’s “Meet the Press”, BBC’s “HardTalk”, CNN’s “Global Office”, NBC’s “Weekend Today”, France 24, the UK’s Channel 4 and NPR’s “Morning Edition". She has spoken at high-level events like Tech for Good, VivaTech, Wired NextFest, World Economic Forum, Mobile World Congress, Web Summit, Collision and Singularity University.
+            {% endtrans %}
+            </em>
+          </p>
+        </div>
+      </article>
+
+      <article id="chris-beard" data-id="chris-beard" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/chris-beard.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Chris Beard</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief Executive Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2004</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/cbeard">@cbeard</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/cbeard/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Chris-Beard.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#chris-beard">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Chris Beard has been CEO of the Mozilla Corporation and a member of its Board of Directors since 2014.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            As CEO, his focus has been on returning the organization to its roots and putting people at the center of everything Mozilla does. In particular, he is focused on ensuring Mozilla and its flagship product, Firefox, remain a beacon of freedom as people’s lives become increasingly intertwined with the Internet across desktop, mobile and new domains.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            A lifelong learner, Chris has been a passionate advocate for Open Source his entire career. He has led engineering, product and marketing teams to collaborate on Open Source projects for more than 20 years.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            At Mozilla, Chris has led marketing and product management teams to build the Mozilla and Firefox brands, grow the community, and launch core products to hundreds of millions of users globally. As the company’s first Chief Innovation Officer, he led Mozilla Labs to develop new technology that formed the foundation for Mozilla’s mobile, social and identity products. In 2013, he joined Greylock Partners as an Executive-in-Residence and then returned to Mozilla as CEO in 2014.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Chris held marketing and product roles at Cluster File Systems (acquired by Sun), Hewlett-Packard Company and Linuxcare. He was also co-founder and CEO of The Puffin Group (acquired by Linuxcare), an early Open Source technology startup that was focused on Linux kernel and device driver development.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Chris studied economics and biochemistry at the University of Ottawa and received his MBA in International Business from the University of Edinburgh, where he was also awarded the John McFarlane Prize for Leadership. He is a member of the national board of directors of Make-A-Wish. Born in Canada, Chris now calls the San Francisco Bay Area home with his wife and their two children.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="katharina-borchert" data-id="katharina-borchert" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/katharina-borchert.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Katharina Borchert</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief Open Innovation Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2014</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/lyssaslounge">@lyssaslounge</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/Katharina/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Katharina-Borchert.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#katharina-borchert">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Mozilla’s Chief Open Innovation Officer, Katharina serves as the senior executive broadly responsible for open innovation, in terms of our community management, participation systems, and non-commercial partnerships with organizations to advance product, technology and policy work.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Katharina has a background that includes more than a decade of new business growth and technological innovation in media and journalism, most recently as CEO at Spiegel Online, the online division of one of Europe’s most influential magazines. Prior to that, Katharina was Editor-in-Chief and CEO at WAZ Media Group, where she completely reimagined the way local and regional journalism could be done, launching a new portal “Der Westen” based heavily upon user participation, integrated social media, and one of the earliest with a focus on location-based data in journalism.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Katharina studied law (with a focus on humanitarian law) and journalism in Hamburg and Lausanne. She previously worked at the UN Center for Human Rights.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="kenton-chow" data-id="kenton-chow" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/kenton-chow.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Kenton Chow</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Interim Chief Finance Officer') }}</p>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Kenton-Chow.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#kenton-chow">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Interim Chief Finance Officer, Kenton Chow is responsible for defining, driving and implementing Mozilla’s financial goals and strategy.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Kenton held several executive management positions as Chief Finance Officer and Chief Operating Officer of private and public technology companies in the software, big data analytics, e-commerce, security, biotechnology, retail, digital marketing, networking and computer systems sectors.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Over the course of his career, Kenton has successfully raised over $500 million in private and public financings and completed over $2.4 billion in 11 M&A transactions, including by leading the IPO of Cobalt Networks and its subsequent acquisition by Sun Microsystems for $2.0 billion. His experience includes working as COO at RetailNext, a SaaS-based predictive retail analytics company, and as CFO at Wine.com, Nominum, Aurora Networks, Azul Systems and Cobalt Networks and senior financial positions at Sun Microsystems and Symantec.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Kenton has a B.S. in Commerce and Finance and an MBA from Santa Clara University. He is a CPA in the State of California and serves on the Board of Directors of Modcam AB, an IoT vision technology start-up, and Union + Webster, a marketing agency.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Kenton is also a partner at FLG Partners, a leading CFO services firm in Silicon Valley.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="michael-deangelo" data-id="michael-deangelo" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/michael-deangelo.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Michael DeAngelo</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief People Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2017</p>
+
+          <ul class="elsewhere">
+            <li><a class="url link" itemprop="url" rel="external" href="https://www.linkedin.com/in/michaeldeangelo/">LinkedIn</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Michael-DeAngelo.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#michael-deangelo">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Chief People Officer, Michael reports directly into CEO Chris Beard and is responsible for all aspects of HR and Organizational Development at Mozilla Corporation. Michael is a strong people advocate and he helped lead several firsts in the Tech industry including setting public Diversity goals and creating more employee rights for stock options.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Michael spent 3 and a half years as the Head of People for Pinterest with responsibility for all HR functions and reporting into the CEO. Before Pinterest, Michael spent 4 years at Google leading HR for the Europe/Middle East/Africa region and lived abroad in Zurich, Switzerland. At Google he also led the HR team supporting 10,000 employees for Search, Android, Chrome, Maps, Music and Google Home. Prior to Google, Michael was Vice President of HR at Pepsico leading all people functions for the Quaker Foods global P&L as well as all C-level leadership. Before Pepsi, Michael had a number of HR roles in Organization Development, Compensation, Recruiting and Labor Relations in Microsoft, Merck and AlliedSignal. Michael received his Master's degree in Industrial and Labor Relations from Cornell University and lives in San Francisco with his family of 5.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="denelle-dixon" data-id="denelle-dixon" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/denelle-dixon.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Denelle Dixon</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief Operating Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2010</p>
+
+          <ul class="elsewhere">
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/ddixon/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Denelle-Dixon.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#denelle-dixon">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Chief Operating Officer, Denelle is responsible for the overall operating business, leading the strategic and operational teams to scale Mozilla’s mission impact as a robust open source organization.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Denelle also spearheads Mozilla’s business, policy and legal activities in defense of an open, transparent and commercially sustainable Web and leads the team responsible for negotiating partnerships and revenue relationships that ensure Mozilla’s sustainability. Denelle has been a vocal advocate for encryption, the disclosure of vulnerabilities by governments and greater user choice and control.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Denelle was an outside advisor to Mozilla for several years before joining as Associate General Counsel in 2012. Denelle’s experience prior to joining Mozilla includes working at UK-based private equity firm Terra Firma on brand issues and risk assessment, as well as managing Yahoo!’s legal team advising on products, human rights, antitrust and litigation issues.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Denelle is a qualified lawyer with a B.A. from the University of California, Davis and a J.D. from University of California, Hastings College of Law. She also clerked at the United States District Court for the District of Hawaii.
+          {% endtrans %}
+          </p>
+
+          <div class="callout">
+            <p>
+            {% trans
+                link_presshere='http://www.pressheretv.com/apple-finds-friends-in-its-battle-with-the-fbi/',
+                link_cnnquest='http://www.cnn.com/videos/tv/2016/02/24/exp-denelle-dixon-thayer-richard-quest-mozilla.cnn',
+                link_bloomberg='http://www.bloomberg.com/news/audio/2016-03-30/bloomberg-advantage-apple-case-not-just-one-phone-situation',
+                link_efe='http://www.wradio.com.co/noticias/economia/emerge-americas-reune-en-miami-beach-a-innovadores-inversores-y-politicos/20160418/nota/3110985.aspx',
+                link_time='http://time.com/4263121/apple-fbi-backdoor/',
+                link_nytimes='http://www.nytimes.com/2016/04/28/technology/with-finality-fbi-opts-not-to-share-iphone-unlocking-method.html',
+                link_adage='https://drive.google.com/open?id=0Bx2TpUdUEBxfaU53S3ZiMThUUGluQnFfWUc2emdVQ0tDcnIw',
+                link_oxford='https://www.youtube.com/watch?v=w6cQsPPw2LY',
+                link_emtech='http://www.technologyreview.com/emtech/digital/15/video/watch/bts-dixon-thayer/',
+                link_mwc='http://www.mobileworldlive.com/mwl-tv-videos/mwltv15-tuesday/fcc-keynote-preview-panel/',
+                link_andicom='https://www.youtube.com/watch?v=GlZqM3nvPEc' %}
+              Denelle has appeared on <a rel="external" href="{{ link_presshere }}">NBC Press:Here</a>,
+              <a rel="external" href="{{ link_cnnquest }}">CNN “Quest Means Business”</a>,
+              <a rel="external" href="{{ link_bloomberg }}">Bloomberg Radio</a>,
+              <a rel="external" href="{{ link_efe }}">EFE</a>, <a href="{{ link_time }}">TIME</a>,
+              <a rel="external" href="{{ link_nytimes }}">The New York Times</a> and
+              <a rel="external" href="{{ link_adage }}">Advertising Age</a>. She defended the
+              pro-encryption motion during a <a rel="external" href="{{ link_ofxord }}">debate at the Oxford Union</a>
+              and has spoken at Collision, <a rel="external" href="{{ link_emtech }}">MIT EmTech Digital</a>,
+              <a rel="external" href="{{ link_mwc }}">Mobile World Congress</a> and
+              <a rel="external" href="{{ link_andicom }}">ANDICOM</a> on data privacy, net neutrality and user choice.
+            {% endtrans %}
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article id="jascha-kaykas-wolff" data-id="jascha-kaykas-wolff" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/jascha-kaykas-wolff.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Jascha Kaykas-Wolff</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief Marketing Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2015</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/kaykas">@kaykas</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/kaykas/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Jascha-Kaykas-Wolff.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#jascha-kaykas-wolff">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Chief Marketing Officer, Jascha Kaykas-Wolff leads Mozilla’s global marketing strategy and organization.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Jascha believes in two key principles: Find opportunities where no one else is looking; And, never fail the same way twice. It’s a methodology centered around Agile marketing practices and marketing technology. Coupled with a B.A. in Psychology from Whittier College, it’s one that’s served him well professionally and personally.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to joining Mozilla, Jascha most recently served as CMO for BitTorrent, CMO for Mindjet, senior vice president of marketing and customer success at Involver and he previously headed Global Marketing for Webtrends. He also has experience at Microsoft and Yahoo!
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Jascha’s marketing specialties span B2C and B2B including product positioning, marketing strategy, marketing technology, demand creation, brand building, brand repositioning, organizational improvements, agile marketing, and sales enablement.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Outside of work Jascha is a passionate volunteer and mentor with TheLastMile.org. He published Growing Up Fast with Kevin Fann in August 2014. He calls Marin County home with his wife Rebecca, 3 whip-smart children, 1 grey haired hamster, 2 frogs, 6 or 7 fish and one cat that wants to eat them all.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="mark-mayo" data-id="mark-mayo" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mark-mayo.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Mark Mayo</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief Product Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2011</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/mmayo">@mmayo</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/mmayo/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Mark-Mayo.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#mark-mayo">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Chief of Product Mark Mayo oversees new and existing product development, working in collaboration with the Emerging Technologies team, and has overall responsibility for the Firefox, Pocket and Emerging Market teams.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            His responsibilities include overseeing strategic direction for all products, and the associated services that allow Mozilla to be a major force in the world building a safer, better, open Web. Mark came to Mozilla in 2011 to build Mozilla’s cloud offerings, including the Identity, Sync and Location platforms.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Before joining Mozilla, Mark founded an e-commerce company that pioneered mobile flash sales for the outdoor retail market. Previously, Mark was CTO of cloud computing pioneer Joyent where he stewarded Node.js from idea phase to the world’s fastest growing developer ecosystem. Mark’s other professional passion is systems biology, and he spent five years at the Nobel laureate Michael Smith’s Genome Sequencing Center ensuring the human genome was a public resource. His background is in operating systems and bioinformatics, and he holds a B.Sc. in Computer Science from the University of Guelph, Canada.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="sean-white" data-id="sean-white" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/sean-white.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Sean White</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Chief R&amp;D Officer') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2016</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/seanwhite">@seanwhite</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/seanwhite/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Sean-White.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#sean-white">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Sean White is a high-tech executive, entrepreneur, inventor, and musician who has spent his career leading innovative development of the experiences, systems, and technologies that enable creative expression, connect us to each other, and enhance our understanding of the world around us. He was most recently the founder and CEO of BrightSky Labs, a company he incubated while an EIR at Greylock Partners, and is currently teaching CS377m: HCI Issues in Mixed &amp; Augmented Reality at Stanford University.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Before Greylock Partners, Sean founded and built the Interaction Ecologies Group at Nokia, leading multiple innovative efforts in new mobile forms and experiences in the areas of wearables, Internet of Things, and augmented reality. His previous roles include Chief Technology Officer of NeoCarta Ventures, Vice President of Technology for Lycos, Inc. (acquired by Terra Networks), and Chief Technology Officer of WhoWhere? (acquired by Lycos). Prior to that, Sean was a project lead and member of the research staff at Paul Allen’s Interval Research Corporation. He holds Advisory Board positions with Perch, and Virtual Workflow, and previously held Advisory Board positions with NY Sun Works, Environmental Defense, Evite, Gravity and OpenVoice.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            In addition to 30+ peer reviewed publications and 20+ patents granted or filed, Sean is a 2009 Tech Award Laureate for his work on computer vision-based mobile botanical species identification. He has lectured and taught in the Stanford Program in Human-Computer Interaction and at Columbia University, mentored for Engineers without Borders, and served as facilitator for the Clinton Global Initiative. He held an appointment as a Visiting Scientist at the Smithsonian Institution and served on the Steering Committee for IEEE’s International Symposium on Mixed and Augmented Reality (ISMAR).
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Sean earned his B.S. and M.S. in Computer Science from Stanford University and his M.S. in Mechanical Engineering and Ph.D. in Computer Science from Columbia University.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="david-bryant" data-id="david-bryant" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/david-bryant.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">David Bryant</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Fellow') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2014</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/david_bryant">@david_bryant</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/dbryant/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_David-Bryant.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#david-bryant">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As a Fellow in our Emerging Technologies organization, David is responsible for providing technical expertise and representation for engineering broadly in all aspects of company decision making.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            In the past he has held a variety of roles leading product engineering, marketing, sales enablement and technology licensing businesses at Bell Laboratories, Sun Microsytems and Nokia. He was at Bell Labs during the formative years of Unix, working on signal processing and computer graphics components for running the long distance network and, after divestiture, exploring new business opportunities for AT&amp;T. At Sun he managed product teams responsible for key components of Solaris and Sun’s enterprise Internet software stack, including as part of the Sun/Netscape alliance, as well as for the Java platform in embedded and desktop systems.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            In the CTO unit at Nokia, David’s team prototyped emerging hardware and software technologies to accelerate delivery of differentiated mobile computing products. Throughout his career he has been motivated by building Internet and computing technology solutions for real-world problems that matter to people.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            David grew up in Nashville, Tennessee, and holds Bachelor of Science and Master of Engineering degrees in Electrical Engineering from the University of Tennessee.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="dave-camp" data-id="dave-camp" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/dave-camp.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Dave Camp</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP of Engineering, Firefox') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2006</p>
+
+          <ul class="elsewhere">
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/dcamp/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#dave-camp">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As VP of Engineering, Firefox Dave Camp leads the global team of engineers that build, test, and ship the Firefox family of products and services. He’s responsible for making sure everything is on time and high quality.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Dave joined Mozilla in 2006 to work on Gecko, building networking and security features and was a contributor to the release of Firefox 3. After a short stint at a small startup he came back to join the Firefox Developer Tools team. He led the Developer Tools team through its first major release and the introduction of its mobile inspection tools, including remote debugging and responsive design visualization tools.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Dave became Director of Engineering, Firefox with the task of developing engineers and managers’ capabilities, improving core product quality, and cementing the team’s reputation as a world-class product engineering organization. The team launched Firefox Quantum, incorporating major improvements in speed, stability, security, multitasking and customizability in 2017.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to joining Mozilla Dave worked at Ximian and maintained Nautilus, the central file manager for GNOME, the most popular desktop environment for Linux. He also served on the GNOME Foundation’s board of directors.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            In his spare time Dave plays thrash metal guitar for his children at their home in the Pacific Northwest.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="susan-chen" data-id="susan-chen" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/susan-chen.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Susan Chen</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP, Business Development') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2011</p>
+
+          <ul class="elsewhere">
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/schen">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Susan-Chen.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#susan-chen">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Susan is Mozilla’s Vice President of Business Development. She is responsible for sourcing, negotiating and executing major business deals and partnerships for Mozilla across its product lines including search, commerce, content, communications, mobile and connected devices. She is also in charge of managing the business development team working across the globe.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Susan brings over a decade of experience in sourcing, structuring and negotiating complex deals at global technology companies and startups. Since joining Mozilla in 2011 as Head of Strategic Development, Susan has worked with the Mozilla team to structure and execute multiple complex negotiations and concluded hundreds of millions dollar revenue and partnership deals for Mozilla products and services.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Susan was the VP of International Market Development at Entertainment Shopping AG, a venture backed startup where she led the market entry strategy and plan for Japan, China, Brazil and Australia. At Yahoo! Inc., Susan was the VP of Business Development for Yahoo! Asia Region where she managed a team that generated over 1 billion dollar in revenues from partnerships. She also led the market development and partner strategies for Yahoo Search Marketing (formerly Overture) in Asia and Latin America.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Susan holds an AB in Economics from Cornell University.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="alan-davidson" data-id="alan-davidson" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/alan-davidson.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Alan Davidson</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP of Global Policy, Trust and Security') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2018</p>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Alan-Davidson.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#alan-davidson">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Vice President of Global Policy, Trust and Security, Alan is responsible for leading Mozilla’s public policy work promoting an open Internet and a healthy web around the world. He will also supervise a trust and security team focused on promoting innovative privacy and security features that put people in control of their online lives.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Alan was a Senior Program Fellow with New America in Washington D.C., and a Mozilla Fellow. Until early 2017 he served as the first Director of Digital Economy at the U.S. Department of Commerce, where he led the Department’s efforts on Internet and digital economy policy.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Earlier, Alan opened Google’s public policy office in Washington D.C. and scaled its policy team in the US. He led the company’s public policy and government relations efforts in North and South America for seven years. He has also held a number of public interest leadership roles, serving as Director of New America’s Open Technology Institute and early in his career as Associate Director of the Center for Democracy and Technology.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Alan holds a Bachelor’s degree in mathematics and computer science and a Master’s degree in technology and policy from the Massachusetts Institute of Technology (MIT). He is a graduate of the Yale Law School and a member of the D.C. Bar.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="amy-keating" data-id="amy-keating" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/amy-keating.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Amy Keating</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('General Counsel') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2018</p>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Amy-Keating.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#amy-keating">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As General Counsel, Amy is responsible for all aspects of Mozilla’s legal work including product counseling, commercial contracts, licensing, privacy issues and legal support to the Mozilla Foundation.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Amy was Vice President, Legal and Deputy General Counsel at Twitter, Inc. Amy joined Twitter in 2012 as Twitter’s first lawyer focused on litigation, building out the function and supporting the company as both the platform and the employee base grew in the U.S. and internationally. Her role expanded over time to include oversight of Twitter's product counseling, regulatory, privacy, employment legal, global litigation, and law enforcement legal response functions. During her tenure, she worked on legal matters in more than twenty countries.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Twitter, Amy worked on the legal team at Google Inc. and began her legal career as an associate at Bingham McCutchen LLP. Amy holds a J.D. from the University of California, Berkeley School of Law and a B.A. in Political Science from the University of California, Berkeley.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="chris-lin" data-id="chris-lin" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/chris-lin.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Chris Lin</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP, Information Technology') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2018</p>
+
+          <ul class="utility">
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#chris-lin">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As Vice President of IT, Chris Lin is responsible for the strategy, execution and operations of Mozilla’s business technology, information security, data management, network and infrastructure services.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, Chris was Director of Enterprise Platform Infrastructure at Facebook and held leadership roles at Symantec, Autodesk, VeriSign and Ellie Mae, where he was in charge of engineering, infrastructure operations and architecture services. Chris is also the founder and former President and CEO of iDini Corporation, a provider of scalable network computing for carrier-grade cloud services serving mobile devices. Chris has a Ph.D. from the University of California, Berkeley.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="mary-ellen-muckerman" data-id="mary-ellen-muckerman" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mary-ellen-muckerman.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Mary Ellen Muckerman</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP, Brand Engagement') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2011</p>
+
+          <ul class="elsewhere">
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/maryellen/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Mary-Ellen-Muckerman.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#mary-ellen-muckerman">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Mary Ellen is the VP of Brand Engagement, responsible for the brand strategy positioning and narrative of Mozilla and Firefox, as well as the design and production of many of the engagement assets we develop to create relationships with people around the world.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to joining Mozilla, Mary Ellen spent several years at Wolff Olins, a global brand consultancy where, as leader of their San Francisco office and the US strategy team, she worked with clients like Mozilla, the Smithsonian, Target and Google to help them identify what makes them unique and relevant to their audiences and then apply that strategic idea both internally, to guide their culture and capabilities, and externally, to influence their products, services and communications. Mary Ellen also held brand and marketing roles during her 10 years at Target and learned the retail ropes in regional marketing at McDonald’s and store management at The May Company Department Stores.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mary Ellen holds a B.S. in Business from Miami University and an M.L.S. from the University of Minnesota.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="nick-nguyen" data-id="nick-nguyen" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/nick-nguyen.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Nick Nguyen</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP of Product, Firefox') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2008</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/osunick">@osunick</a></li>
+            <li><a class="url website" itemprop="url" rel="external" href="http://osunick.com">osunick.com</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/osunick/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Nick-Nguyen.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#nick-nguyen">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            As a product strategist for Mozilla, Nick is responsible for leading strategic product initiatives to advance our mission by building great products that help people take control of and explore the full potential of their online lives, while empowering them with technology, know-how and opportunity to advance the Open Web.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Nick is passionate about building mobile product experiences that make people happy. Mostly recently he served as Sr. Director of Mobile Products at Walmart Labs following the acquisition of Tasty Labs, a mobile and social startup he co-founded and where he served as Chief Operating Officer and Vice President of Products. At Walmart Labs, he was responsible for launching award-winning Android and iOS apps for Walmart, Sam’s Club and Asda. Prior to this he served as Director of Addons for Mozilla where he was responsible for Firefox ecosystem development and customization features. He has also held a variety of product leadership and software development roles at Yahoo!, Trilogy and Ford Motor Company. He holds a Bachelor of Science degree from Ohio State University.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="eric-rescorla" data-id="eric-rescorla" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/eric-rescorla.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Eric Rescorla</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('CTO, Firefox') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2001</p>
+
+          <ul class="elsewhere">
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/ekr/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Eric-Rescorla.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#eric-rescorla">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Eric is CTO of the Firefox team at Mozilla. In this role he leads the long-term technical strategy for Firefox, He also partners with the Engineering and Product organizations to set the short-term technical direction.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Since joining Mozilla in 2013, Eric has been focused on advanced technologies and Mozilla’s technical strategy. Eric was instrumental in the development of WebRTC, which brought voice and video to the browser and worked with Cisco to start OpenH264, which allows Open Source projects to use the world’s most popular video codec for free. He also played a key role in starting Let’s Encrypt, which makes it easy for anyone to run a secure website.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Eric’s background is in communications security, especially Transport Layer Security (TLS), the foundational security protocol for the Web. He is the former chair of the Internet Engineering Task Force TLS Working group as well as the editor of the TLS and HTTPS specification. Eric co-designed Datagram Transport Layer Security, and is the author of one of the standard books on TLS.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Eric was on the Internet Architecture board from 2002 to 2008 and in 2007 served on California Secretary of State Debra Bowen’s Top-to-Bottom Review of the voting systems certified for use in California.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Eric holds a B.S. degree in chemistry from Yale University.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+    </div>{# end moco management #}
+
+    <h3 class="group-title" id="mgmt-foundation"><a href="https://foundation.mozilla.org/">{{ _('Mozilla Foundation') }}</a></h3>
+
+    <div class="gallery mgmt-foundation">
+      <article id="mark-surman" data-id="mark-surman" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mark-surman.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Mark Surman</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('President and Executive Director') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2008</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/msurman">@msurman</a></li>
+            <li><a class="url website" itemprop="url" rel="external" href="https://commonspace.wordpress.com/">{{ _('Website') }}</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/surman/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Mark-Surman.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#mark-surman">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            The internet is one of our most valuable public resources -- it’s Mark Surman’s job to keep it healthy.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mark is Executive Director of Mozilla Foundation, the global nonprofit that does everything from making Firefox to standing up for issues like online privacy. Mark is focused on fueling the broader internet health movement by working with citizens, technologists and civic leaders around the world. Mark is also part of the team that develops Mozilla’s annual Internet Health Report.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mark has been doing work like this for 20 years: ensuring the internet remains a global public resource, open and accessible to all. Mark was the founding Director of telecentre.org, a $26M initiative connecting community technology centers in more than 30 countries. He ran the Commons Group for 10 years, a boutique consulting firm that provided advice and insight on networks, open source and social enterprise to nonprofits and governments around the world. Mark was awarded the prestigious Shuttleworth Fellowship, where he explored how to apply open source approaches to philanthropy in the year before he joined Mozilla.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mark is a prominent thinker and thought leader -- his analysis and opinions have been featured in <i>The Washington Post</i>, NPR, CNN, the BBC, <i>Fast Company</i> and dozens of other publications. A seasoned and charismatic speaker, Mark has delivered keynotes on five continents at major global events as diverse as Mobile World Congress, Personal Democracy Forum, TEDx Kids, World Innovation Summit on Education and the O’Reilly Open Source Summit.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mark serves as a trusted advisor on the board of Peer-to-Peer University. He is a past board member of the World Bank Solutions for Youth Employment Consortium, the Toronto Arts Foundation, Connected Learning Alliance, Telefonica’s Think Big, the Association for Progressive Communications, Wild Canada and <a rel="external" href="http://www.rabble.ca">rabble.ca</a>.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Mark lives in Toronto with his sons, Tristan and Ethan. He holds a BA in the History of Community Media from the University of Toronto.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="ashley-boyd" data-id="ashley-boyd" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/ashley-boyd.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Ashley Boyd</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('VP, Advocacy') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2017</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/ashleyboyd">@ashleyboyd</a></li>
+            <li><a class="url book" itemprop="url" rel="external" href="https://mozillians.org/u/ashleywarrenboyd">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Ashley-Boyd.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#ashley-boyd">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Ashley leads Mozilla’s work to fuel the open internet movement and mobilize millions to stand up for a free, open web. Mozilla’s mission is ambitious: making the health of the internet a mainstream issue. It is also vital: as centralization, surveillance, exclusion and other online threats proliferate, we need a movement to keep the web a global public resource.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Ashley works with other teams within Mozilla, with ally organizations and with digital citizens around the world through advocacy campaigns and public education initiatives.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to joining Mozilla, Ashley was Vice President &amp; Chief Field Officer for MomsRising, a national grassroots organization in the U.S. As a founding staff member, she was instrumental in building MomsRising into an organization of one million grassroots supporters, 200 partner organizations and over 20 funding partners.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Ashley has over two decades of experience in public interest advocacy, with a specialization in effective uses of technology and public engagement. During her career, she has worked with leading public interest advocacy organizations in the U.S. and India including M&amp;R Strategic Services, the Advocacy Institute, the Self Employed Women’s Association (India) and AmericaSpeaks. She has led multi-state organizing efforts around the issues of health reform, paid family leave, social security reform and the national budget.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Ashley has a Master’s Degree in Rhetoric from the University of Maryland, College Park.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+
+      <article id="angela-plohman" data-id="angela-plohman" class="vcard has-bio" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/angela-plohman.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Angela Plohman</h4></figcaption>
+        </figure>
+
+        <div class="person-info">
+          <p class="title" itemprop="jobTitle">{{ _('Executive Vice President') }}</p>
+          <p class="since">{{ _('With Mozilla since:') }} 2012</p>
+
+          <ul class="elsewhere">
+            <li><a class="url twitter" itemprop="url" rel="external" href="https://twitter.com/angelaplohman">@angelaplohman</a></li>
+            <li><a class="url book" itemprop="url" href="https://mozillians.org/u/aplohman/">{{ _('Mozillians profile') }}</a></li>
+          </ul>
+
+          <ul class="utility">
+            <li><a class="file" rel="external" href="https://assets.mozilla.net/leadership/mozilla_portrait_Angela-Plohman.jpg">{{ _('Download high resolution photo') }}</a></li>
+            <li><a class="link" href="{{ url('mozorg.about.leadership') }}#angela-plohman">{{ _('Link to this bio') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="person-bio">
+          <p>
+          {% trans %}
+            Angela Plohman is an experienced nonprofit executive and strategic operations professional with a long track record of building and growing nonprofit organizations and programs. She has spent close to two decades playing key leadership roles in the fields of art, culture and open source technology. She joined Mozilla, one of the world’s most recognizable tech-for-good organizations, in 2012.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            As Executive Vice President, Operations, Angela has been critical in evolving the Mozilla Foundation into an advocacy and education organization; more than doubling the size of the Foundation’s staff and revenue; and leading the growth of its operational infrastructure. Angela also co-leads Mozilla’s diversity and inclusion initiatives, and serves as Secretary on the Foundation’s board of directors.
+          {% endtrans %}
+          </p>
+
+          <p>
+          {% trans %}
+            Prior to Mozilla, she was Director of Baltan Laboratories, a laboratory for art and technology based in Eindhoven, the Netherlands. Angela also served in key roles at the European Cultural Foundation in Amsterdam, the Blender Foundation in Amsterdam, and the Daniel Langlois Foundation for Art, Science and Technology in Montreal, among others. She has written and spoken extensively on art and the importance of research and production spaces for artists and professionals working creatively with technology. Angela holds a B.A. from the University of Winnipeg and an M.A. from Concordia University.
+          {% endtrans %}
+          </p>
+        </div>
+      </article>
+    </div>{# end mofo management #}
+
+    </div>
+  </section>
+
+  <section id="reps-council" class="section section-group">
+    <div class="content">
+
+    <h2 class="section-title">{{ _('Mozilla Reps Council') }}</h2>
+    <div class="section-intro">
+      <p>{{ _('The Mozilla Reps Council is composed of volunteer Mozillians who function as official representatives of Mozilla in their region or locale. The council provides the general vision for the Mozilla Reps Program and oversees day-to-day operations globally.') }}</p>
+    </div>
+
+    <ul class="gallery">
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/MonicaBonilla/">
+            {{ high_res_img('mozorg/about/leadership/monica-bonilla.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Mónica Bonilla</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2013</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/yofiesetiawan/">
+            {{ high_res_img('mozorg/about/leadership/yofie-setiawan.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Yofie Setiawan</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2011</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/manel_rhaiem92/">
+            {{ high_res_img('mozorg/about/leadership/manel-rhaiem.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Manel Rhaiem</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2012</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/Mte90/">
+            {{ high_res_img('mozorg/about/leadership/daniele-scasciafratte.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Daniele Scasciafratte</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2013</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/edovio/">
+            {{ high_res_img('mozorg/about/leadership/edoardo-viola.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Edoardo Viola</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2015</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/omudongo/">
+            {{ high_res_img('mozorg/about/leadership/oarabile-mudongo.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Oarabile Mudongo</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2011</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/Irvin/">
+            {{ high_res_img('mozorg/about/leadership/irvin-chen.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Irvin Chen</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2005</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://mozillians.org/u/couci/">
+            {{ high_res_img('mozorg/about/leadership/konstantina-papadea.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Konstantina Papadea</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2013</p>
+      </li>
+
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <a class="url" itemprop="url" rel="external" href="https://reps.mozilla.org/u/nukeador/">
+            {{ high_res_img('mozorg/about/leadership/ruben-martin.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+            <figcaption><h4 class="fn" itemprop="name">Rubén Martin</h4></figcaption>
+          </a>
+        </figure>
+        <p class="since">{{ _('With Mozilla since:') }} 2004</p>
+      </li>
+    </ul>
+
+    </div>
+  </section>
+
+  <section id="directors" class="section section-group">
+    <div class="content">
+
+    <h2 class="section-title">{{ _('Boards of Directors') }}</h2>
+
+    <h3 class="group-title" id="board-corp">{{ _('Mozilla Corporation') }}</h3>
+
+    <ul class="gallery">
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mitchell-baker.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          {# L10n: This "Chair" is the chairperson of the board of directors, not something to sit on #}
+          <figcaption><h4 class="fn" itemprop="name">Mitchell Baker, {{ _('Chair') }}</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/chris-beard.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Chris Beard</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/julie-hanna.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Julie Hanna</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/karim-lakhani.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Karim Lakhani</h4></figcaption>
+        </figure>
+      </li>
+    </ul>
+
+    <h3 class="group-title" id="board-foundation">{{ _('Mozilla Foundation') }}</h3>
+    <ul class="gallery">
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mitchell-baker.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          {# L10n: This "Chair" is the chairperson of the board of directors, not something to sit on #}
+          <figcaption><h4 class="fn" itemprop="name">Mitchell Baker, {{ _('Chair') }}</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/brian-behlendorf.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Brian Behlendorf</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/ronaldo-lemos.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Ronaldo Lemos</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/bob-lisbonne.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Bob Lisbonne</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/mohamed-nanabhay.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image', 'title': _('Photo by Joi Ito')}) }}
+          <figcaption><h4 class="fn" itemprop="name">Mohamed Nanabhay</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          {{ high_res_img('mozorg/about/leadership/helen-turvey.jpg', {'alt': '', 'width': '160', 'height': '160', 'class': 'photo', 'itemprop': 'image'}) }}
+          <figcaption><h4 class="fn" itemprop="name">Helen Turvey</h4></figcaption>
+        </figure>
+      </li>
+      <li class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <img class="photo" itemprop="image" alt="" src="{{ static('img/mozorg/about/leadership/nicole-wong.jpg') }}">
+          <figcaption><h4 class="fn" itemprop="name">Nicole Wong</h4></figcaption>
+        </figure>
+      </li>
+    </ul>
+
+    <h3 class="group-title">{{ _('Emeritus Board Members') }}</h3>
+
+    <div class="gallery">
+      <article id="reid-hoffman" class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <img class="photo" itemprop="image" alt="" src="{{ static('img/mozorg/about/leadership/reid-hoffman.jpg') }}">
+          <figcaption><h4 class="fn" itemprop="name">Reid Hoffman</h4></figcaption>
+        </figure>
+      </article>
+
+      <article id="joi-ito" class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <img class="photo" itemprop="image" alt="" src="{{ static('img/mozorg/about/leadership/joi-ito.jpg') }}">
+          <figcaption><h4 class="fn" itemprop="name">Joi Ito</h4></figcaption>
+        </figure>
+      </article>
+
+      <article id="mitch-kapor" class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <img class="photo" itemprop="image" alt="" src="{{ static('img/mozorg/about/leadership/mitch-kapor.jpg') }}">
+          <figcaption><h4 class="fn" itemprop="name">Mitch Kapor</h4></figcaption>
+        </figure>
+      </article>
+
+      <article class="vcard" itemscope itemtype="http://schema.org/Person">
+        <figure class="headshot">
+          <img class="photo" itemprop="image" alt="" src="{{ static('img/mozorg/about/leadership/cathy-davidson.jpg') }}">
+          <figcaption><h4 class="fn" itemprop="name">Cathy Davidson</h4></figcaption>
+        </figure>
+      </article>
+
+    </div>
+
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}

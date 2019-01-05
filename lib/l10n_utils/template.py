@@ -1,14 +1,15 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 from jinja2.ext import Extension, InternationalizationExtension, nodes
-from tower import strip_whitespace
+
+from lib.l10n_utils.templatetags.helpers import gettext
+from lib.l10n_utils.utils import strip_whitespace
 
 
 class I18nExtension(InternationalizationExtension):
     """
-    Use this instead of `tower.template.i18n` because the override of `_`
+    Use this instead of `puente.ext.PuenteI18nExtension` because the override of `_`
     global was throwing errors.
     """
     def _parse_block(self, parser, allow_pluralize):
@@ -30,9 +31,31 @@ class L10nBlockExtension(Extension):
 
         # Block name is mandatory.
         name = parser.stream.expect('name').value
+        locales = []
 
-        # Comma optional.
         parser.stream.skip_if('comma')
+
+        # Grab the locales if provided
+        if parser.stream.current.type == 'name':
+            parser.stream.skip()  # locales
+            parser.stream.skip()  # assign (=)
+            prev_sub = False
+            while parser.stream.current.type not in ['integer', 'block_end']:
+                parser.stream.skip_if('comma')
+                parser.stream.skip_if('assign')
+                token = parser.stream.current
+                if token.type in ['integer', 'block_end']:
+                    break
+                if token.type == 'name':
+                    if prev_sub:
+                        locales[-1] += token.value
+                        prev_sub = False
+                    else:
+                        locales.append(token.value)
+                if token.type == 'sub':
+                    locales[-1] += '-'
+                    prev_sub = True
+                parser.stream.next()
 
         # Add version if provided.
         if parser.stream.current.type == 'integer':
@@ -55,6 +78,7 @@ class L10nBlockExtension(Extension):
         node.set_lineno(lineno)
         node.name = '__l10n__{0}'.format(name)
         node.version = version  # For debugging only, for now.
+        node.locales = locales
         node.body = body
         # I *think*, `true` would mean that variable assignments inside this
         # block do not persist beyond this block (like a `with` block).
@@ -69,7 +93,7 @@ class LoadLangExtension(Extension):
     into a call to a helper method because it needs to context to load
     in the correct locale. As a result, this must be within a block."""
 
-    tags = set(['set_lang_files', 'add_lang_files'])
+    tags = {'set_lang_files', 'add_lang_files'}
 
     def parse(self, parser):
         # Skip over the block name
@@ -90,8 +114,7 @@ class LoadLangExtension(Extension):
         if name == 'add_lang_files':
             # If we are adding files, we need to keep the parent
             # template's list of lang files as well
-            content_nodes.insert(0, [nodes.Call(nodes.Name('super', 'load'),
-                                                [], [], None, None)])
+            content_nodes.insert(0, nodes.Call(nodes.Name('super', 'load'), [], [], None, None))
 
         # Since we are a block, we must emit a block too, so make a
         # random one that contains a call to the load function
@@ -107,3 +130,8 @@ class LoadLangExtension(Extension):
 l10n_blocks = L10nBlockExtension
 lang_blocks = LoadLangExtension
 i18n = I18nExtension
+
+# TODO: make an ngettext compatible function.
+# The pluaralize clause of a trans block won't work untill we do.
+# Need this so that installing translations will work in Jinja.
+ngettext = gettext

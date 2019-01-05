@@ -1,0 +1,174 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "privacy/base-resp.html" %}
+
+{% block page_title_suffix %}{% endblock %}
+{% block page_title %}{{ _('Mozilla Privacy') }}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block body_id %}privacy-landing{% endblock %}
+
+{% block main_feature %}
+  <hgroup id="main-feature" class="center">
+    <h1 class="large">{{ _('Mozilla Privacy') }}</h1>
+  </hgroup>
+{% endblock %}
+
+{% block article %}
+  <article class="section-content" itemscope itemtype="http://schema.org/Article">
+    <header>
+      <h1 itemprop="name">{{ doc.h1.string }}</h1>
+      {% if doc.select('[datetime]') %}
+        <p class="meta"><time datetime="{{ doc.select('[datetime]')[0]['datetime'] }}" itemprop="dateModified">{{ doc.select('[datetime]')[0].string }}</time></p>
+        {{ doc.select('body > section > header > [datetime] ~ p')|join|safe }}
+      {% else %}
+        {{ doc.select('body > section > header > p')|join|safe }}
+      {% endif %}
+    </header>
+    <div itemprop="articleBody">
+      {{ doc.select('body > section > section')|join|safe }}
+    </div>
+  </article>
+  <section id="contact" class="section-content">
+    <header>
+      <h2>{{ _('Contact Mozilla') }}</h2>
+      <p>
+        {%- trans -%}
+          If you want to make a correction to your information, or you have any questions about our
+          privacy policies, please get in touch with:
+        {%- endtrans -%}
+      </p>
+      <p lang="en" dir="ltr" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">Mozilla Corporation</span><br>
+        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+          {{ _('Attn:') }} <span itemprop="name">Legal Notices - Privacy</span><br>
+          <span itemprop="streetAddress">331 E. Evelyn Ave</span>,<br>
+          <span itemprop="addressLocality">Mountain View</span>,
+          <span itemprop="addressRegion">CA</span>
+          <span itemprop="postalCode">94041</span>
+        </span>
+      </p>
+    </header>
+  </section>
+{% endblock %}
+
+{% block side_nav %}{% endblock %}
+
+{% block side_extra %}
+  <section id="side-principles">
+    <h2>{{ _('Data Privacy Principles') }}</h2>
+    <p>
+      {% if l10n_has_tag('updates-072018') %}
+      {%- trans principles=url('privacy.principles'), faq=url('privacy.faq') -%}
+        Mozilla's <a href="{{ principles }}">Data Privacy Principles</a> inspire our
+        practices that respect and protect people who use the Internet. Learn how
+        these principles shape Firefox and all of our products in this
+        <a href="{{ faq }}">FAQ</a>.
+      {%- endtrans -%}
+      {% elif l10n_has_tag('updates-052018') %}
+      {%- trans faq=url('privacy.faq') -%}
+        Mozilla's Data Privacy Principles inspire our practices that respect and
+        protect people who use the Internet. Learn how these principles shape
+        Firefox and all of our products in this <a href="{{ faq }}">FAQ</a>.
+      {%- endtrans -%}
+      {% else %}
+        {%- trans link=url('privacy.principles') -%}
+          Mozilla is an open source project with a mission to improve your Internet
+          experience. This is a driving force behind our data privacy practices.
+          <a href="{{ link }}">Read More</a>
+        {%- endtrans -%}
+      {% endif %}
+    </p>
+  </section>
+  <section id="side-notices">
+    {% if l10n_has_tag('updates-052018') %}
+      <h2>{{ _('Privacy Notices') }}</h2>
+    {% else %}
+      <h2>{{ _('Our Privacy Notices') }}</h2>
+    {% endif %}
+    <p>
+      {% if l10n_has_tag('updates-052018') %}
+        {%- trans -%}
+          Our Privacy Notices describe the data our products and services receive,
+          share, and use, as well as choices available to you.
+        {%- endtrans -%}
+      {% else %}
+        {%- trans -%}
+          We created short and clear Privacy Notices to describe how each of our products and services
+          receives, shares, and uses data and what your choices are. Learn more:
+        {%- endtrans -%}
+      {% endif %}
+    </p>
+    <nav>
+      <ul>
+        <li class="policy-websites"><a href="{{ url('privacy.notices.websites') }}">{{ _('Mozilla Websites, Communications &amp; Cookies') }}</a></li>
+        <li class="policy-firefox"><a href="{{ url('privacy.notices.firefox') }}">{{ _('Firefox Browser') }}</a></li>
+        <li class="policy-firefox-fire-tv"><a href="{{ url('privacy.notices.firefox-fire-tv') }}">{{ _('Firefox for Fire TV') }}</a></li>
+        <li class="policy-firefox-reality"><a href="{{ url('privacy.notices.firefox-reality') }}">{{ _('Firefox Reality') }}</a></li>
+        <li class="policy-firefox-os"><a href="{{ url('privacy.notices.firefox-os') }}">{{ _('Firefox OS') }}</a></li>
+        <li class="policy-firefox-focus">
+        {% if LANG == 'de' %}
+          {# bug 1319207 - As product names are not exposed to L10n, best to specify unique name for de #}
+          <a href="{{ url('privacy.notices.firefox-klar') }}">Firefox Klar</a>
+        {% else %}
+          <a href="{{ url('privacy.notices.firefox-focus') }}">{{ _('Firefox Focus') }}</a>
+        {% endif %}
+        </li>
+        <li class="policy-thunderbird"><a href="{{ url('privacy.notices.thunderbird') }}">{{ _('Thunderbird') }}</a></li>
+      </ul>
+    </nav>
+  </section>
+  {% if l10n_has_tag('updates-052018') %}
+    <section id="side-transparency">
+      <h2>{{ _('Transparency Report') }}</h2>
+      <p>
+        {%- trans report=url('mozorg.about.policy.transparency.index') -%}
+          As an open source project, transparency and openness are an essential
+          part of Mozilla’s founding principles. Our codebases are open and
+          auditable. Our development work is open. Our bi-annual
+          <a href="{{ report }}">Transparency Report</a> also demonstrates our
+          commitment to these principles.
+        {%- endtrans -%}
+      </p>
+    </section>
+  {% endif %}
+
+  <section id="side-involved">
+    <h2>{{ _('Get Involved') }}</h2>
+    <p>
+      {% set group_url = 'https://groups.google.com/forum/?fromgroups#!forum/mozilla.governance' %}
+      {% if l10n_has_tag('updates-052018') %}
+        {%- trans group=group_url -%}
+          To review and comment on proposed changes to our privacy policies, <a href="{{ group }}">
+          subscribe to Mozilla’s governance group</a>.
+        {%- endtrans -%}
+      {% else %}
+        {%- trans group=group_url -%}
+          To review and comment on proposed changes to our privacy policies <a href="{{ group }}">
+          subscribe to Mozilla’s Governance Group</a>.
+        {%- endtrans -%}
+      {% endif %}
+    </p>
+    <p>
+      {% set blog_url = 'https://blog.mozilla.org/privacy/' %}
+      {% if l10n_has_tag('updates-052018') %}
+        {%- trans blog=blog_url -%}
+          Read more about our ongoing privacy and security public policy work on
+          <a href="{{ blog }}">Mozilla's Open Policy and Advocacy Blog</a>.
+        {%- endtrans -%}
+      {% else %}
+        {%- trans blog=blog_url, wiki='https://wiki.mozilla.org/Privacy' -%}
+          Our ongoing work on privacy is covered by the <a href="{{ blog }}">Privacy &amp; Data Safety
+          Blog</a> and information about our ongoing work is available on <a href="{{ wiki }}">
+          Mozilla’s privacy team wiki</a>.
+        {%- endtrans -%}
+      {% endif %}
+    </p>
+  </section>
+  <section id="side-archives">
+    <h2><a href="{{ url('privacy.archive.index') }}">{{ _('Outdated Policies') }}</a></h2>
+  </section>
+{% endblock %}

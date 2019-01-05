@@ -1,0 +1,17 @@
+{% extends 'base-resp.html' %}
+
+{# Base template for newsletter pages #}
+{% set_lang_files "mozorg/newsletters" %}
+
+{% block page_title %}{{ _('Newsletter Subscriptions') }}{% endblock page_title %}
+
+{% block body_class %}sand{% endblock %}
+
+{% block site_css %}
+  {{ super() }}
+  {{ css_bundle('newsletter') }}
+{% endblock %}
+
+{# Don't display an email signup form in the footer of this page, #}
+{# it would be redundant. #}
+{% block email_form %}{% endblock %}
